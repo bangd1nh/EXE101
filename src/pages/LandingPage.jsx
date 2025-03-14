@@ -1,8 +1,9 @@
 import React from "react";
-import ImageSwiper from "../component/ImageSwiper";
-import Galery from "../component/Galery";
-import Award from "../component/Award";
-import FeedBack from "../component/FeedBack";
+import ImageSwiper from "../component/landingPage/ImageSwiper";
+import Galery from "../component/landingPage/Galery";
+import Award from "../component/landingPage/Award";
+import FeedBack from "../component/landingPage/FeedBack";
+import Footer from "../component/partials/Footer";
 
 function LandingPage() {
     const hashTag = [
@@ -43,6 +44,7 @@ function LandingPage() {
             </div>
             <Award />
             <FeedBack />
+            <Footer/>
         </>
     );
 }
