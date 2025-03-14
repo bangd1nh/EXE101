@@ -25,7 +25,7 @@ function ImageSwiper() {
                     <img src="a.webp" className="w-full h-full object-cover" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="a.webp" className="w-full h-full object-cover" />
+                    <img src="c.jpg" className="w-full h-full object-cover" />
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src="a.webp" className="w-full h-full object-cover" />
