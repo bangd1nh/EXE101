@@ -311,20 +311,34 @@ export const photos = [
         comments: 54,
         saves: 12,
     },
-    {
-        src: "e.jpg",
-        bookmark: ["green", "red"],
-        author: "dinhbang",
-        likes: 12,
-        comments: 54,
-        saves: 12,
-    },
-    {
-        src: "f.webp",
-        bookmark: ["green", "red"],
-        author: "dinhbang",
-        likes: 12,
-        comments: 54,
-        saves: 12,
-    },
 ];
+
+export const photographerProfile = {
+    img: "ava.jpg",
+    name: "Photographer Daniele Torella",
+    location: "Rome, Italy ",
+    userName: "danieletorella",
+    description:
+        "Documenting exclusive weddings around the world through cinematic, elegant and timeless photographs. As seen in Vogue, Elle & Vanity Fair.",
+    joiningAt: "15/3/2025",
+    language: "italian, english, spanish",
+    follower: 1113,
+    phoneNumber: "0912341234",
+    award: [
+        "The best wedding photographer in the world",
+        "Top 3 best couple photographers in the world",
+    ],
+    major: [
+        { name: "weding", price: 1000000 },
+        { name: "couples", price: 2000000 },
+        { name: "materity", price: 30000000 },
+        { name: "family", price: 4000000 },
+    ],
+    website: "bangdinh.com",
+    price: [
+        { name: "weding", price: 1000000 },
+        { name: "couples", price: 2000000 },
+        { name: "materity", price: 30000000 },
+        { name: "family", price: 4000000 },
+    ],
+};
