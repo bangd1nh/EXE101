@@ -44,7 +44,7 @@ function LandingPage() {
             </div>
             <Award />
             <FeedBack />
-            <Footer/>
+            <Footer />
         </>
     );
 }

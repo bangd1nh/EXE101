@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 function FeedBack() {
+    const navigate = useNavigate();
     return (
         <div>
             <p className="text-center">
@@ -63,7 +65,10 @@ function FeedBack() {
                     love!
                 </p>
                 <div className="text-center mt-10 mb-10">
-                    <button className="text-white bg-indigo-500 hover:bg-indigo-800 px-20 py-5 rounded-3xl text-2xl font-semibold duration-300">
+                    <button
+                        className="text-white bg-indigo-500 hover:bg-indigo-800 px-20 py-5 rounded-3xl text-2xl font-semibold duration-300"
+                        onClick={() => navigate("/login")}
+                    >
                         Join
                     </button>
                 </div>

@@ -14,7 +14,7 @@ function Galery() {
                         <img
                             src={src}
                             alt={`Image ${index + 1}`}
-                            className="w-full h-auto object-cover rounded-lg"
+                            className="w-64 h-64 object-cover rounded-lg"
                         />
                     </div>
                 ))}
