@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import MiniNavBar from "../component/partials/MiniNavBar";
 import { major, photos } from "../constants/data";
+import MiniNavBar from "../components/partials/MiniNavBar.jsx";
 
 const BookmarkFlags = ({ colors }) => (
     <div className="absolute top-0 right-6 flex gap-1">
