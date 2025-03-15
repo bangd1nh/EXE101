@@ -13,7 +13,7 @@ import {
     Typography,
 } from "@mui/material";
 import PhotographerCard from "../component/photographer/PhotographerCard";
-import { photographers } from "../constants/data";
+import { major, photographers } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 
 function Photographer() {
@@ -43,18 +43,11 @@ function Photographer() {
         "Laos",
         "Brunei",
     ];
-    const major = [
-        "Wedding",
-        "Portrait",
-        "Landscape",
-        "Fashion",
-        "Sports",
-        "Wildlife",
-        "Event",
-        "Commercial",
-        "Travel",
-        "Documentary",
-    ];
+
+    const handleCallBack = (data) => {
+        console.log(data);
+    };
+
     const [selectedMajor, setSelectedMajor] = useState(major[0]);
 
     const languages = [
@@ -73,7 +66,7 @@ function Photographer() {
 
     return (
         <div>
-            <MiniNavBar categories={categories} />
+            <MiniNavBar categories={categories} callback={handleCallBack} />
             <div>
                 <p className="text-center font-light text-3xl mt-5">
                     World's Best Wedding Photographers

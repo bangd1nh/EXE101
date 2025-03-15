@@ -5,7 +5,6 @@ import { PhoneOutlined, WhatsAppOutlined } from "@ant-design/icons";
 function PhotographerCard({ photographer }) {
     return (
         <div className="p-6 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-6">
-            {/* Avatar + Info */}
             <div className="flex-shrink-0 text-center">
                 <img
                     src={photographer.profilePicture}
