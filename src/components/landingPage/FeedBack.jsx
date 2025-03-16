@@ -10,7 +10,7 @@ function FeedBack() {
             </p>
             <div className="grid grid-cols-3 mx-auto w-5xl gap-5">
                 <div className="border-2 border-gray-300 rounded-3xl p-10">
-                    <img src="a.webp" className="rounded-full" />
+                    <img src="/public/images/navbar/avatar.jpg" className="rounded-full" />
                     <p className="text-center font-semibold text-indigo-600 mt-5 ">
                         Bagdnh
                     </p>
@@ -26,7 +26,7 @@ function FeedBack() {
                     </p>
                 </div>
                 <div className="border-2 border-gray-300 rounded-3xl p-10">
-                    <img src="a.webp" className="rounded-full" />
+                    <img src="/public/images/navbar/avatar.jpg" className="rounded-full" />
                     <p className="text-center font-semibold text-indigo-600 mt-5 ">
                         Bagdnh
                     </p>
@@ -42,7 +42,7 @@ function FeedBack() {
                     </p>
                 </div>
                 <div className="border-2 border-gray-300 rounded-3xl p-10">
-                    <img src="a.webp" className="rounded-full" />
+                    <img src="/public/images/navbar/avatar.jpg" className="rounded-full" />
                     <p className="text-center font-semibold text-indigo-600 mt-5 ">
                         Bagdnh
                     </p>

@@ -14,7 +14,8 @@ import {
 } from "@ant-design/icons";
 import { Button } from "@mui/material";
 import Photo from "./Photo";
-import Footer from "../component/partials/Footer";
+import Footer from "../components/partials/Footer";
+// import Footer from "../component/partials/Footer";
 
 function PhotographerProfile() {
     const [follow, setFollow] = useState(false);

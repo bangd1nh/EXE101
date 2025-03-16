@@ -14,7 +14,7 @@ function ImageSwiper() {
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 1000,
+                    delay: 1500,
                     disableOnInteraction: false,
                 }}
                 modules={[Autoplay]}
@@ -22,24 +22,24 @@ function ImageSwiper() {
                 allowTouchMove={false}
             >
                 <SwiperSlide>
-                    <img src="a.webp" className="w-full h-full object-cover" />
+                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="c.jpg" className="w-full h-full object-cover" />
+                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="a.webp" className="w-full h-full object-cover" />
+                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="a.webp" className="w-full h-full object-cover" />
+                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
                 </SwiperSlide>
             </Swiper>
             <div className="absolute z-10 text-center text-gray-700 flex-row">
-                <p className="text-5xl mb-10">
+                <p style={{color:'white'}} className="text-5xl mb-10">
                     More than 45 000 wedding and family photographers in the
                     entire world
                 </p>
-                <p className="text-4xl mb-10">
+                <p style={{color:'white'}} className="text-4xl mb-10">
                     Find the best photographers near me:
                 </p>
                 <div>

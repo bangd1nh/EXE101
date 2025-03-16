@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MiniNavBar from "../component/partials/MiniNavBar";
+// import MiniNavBar from "../component/partials/MiniNavBar";
 import {
     Box,
     Button,
@@ -15,6 +15,7 @@ import {
 import PhotographerCard from "../component/photographer/PhotographerCard";
 import { major, photographers } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
+import MiniNavBar from "../components/partials/MiniNavbar";
 
 function Photographer() {
     const [anchorEl, setAnchorEl] = useState(null);

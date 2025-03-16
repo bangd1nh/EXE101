@@ -15,6 +15,8 @@ import {
     GoogleOutlined,
 } from "@ant-design/icons";
 
+import "/public/css/style.css";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 function Register() {
@@ -132,9 +134,11 @@ function Register() {
                     </div>
                 </div>
                 <div className="mt-5">
-                    <Button variant="contained" className="w-full">
-                        <p>Sign in</p>
-                    </Button>
+                    <Link to={"/login"}>
+                        <Button variant="contained" className="w-full">
+                            <p>Sign in</p>
+                        </Button>
+                    </Link>
                 </div>
                 <div className="mt-5 flex justify-center items-center">
                     <div className="border-t w-full border-stone-500"></div>
@@ -161,7 +165,7 @@ function Register() {
                 </div>
             </div>
             <div className="w-full h-full bg-gradient-login flex justify-center items-center">
-                <p className="text-4xl font-light">Hello There!</p>
+                <p className="text-4xl font-light">Welcome to FrameMate</p>
             </div>
         </div>
     );
