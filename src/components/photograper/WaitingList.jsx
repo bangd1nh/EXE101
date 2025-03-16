@@ -10,9 +10,9 @@ const WaitingList = () => {
   const [selectedCustomerId, setSelectedCustomerId] = useState(null);
 
   const customers = [
-    { id: 1, name: "Alice Johnson", phone: "0123-456-789", address: "123 Đường ABC, Hà Nội", note: "Muốn phong cách cổ điển", avatar: "/images/user1.jpg", request: "Chụp ảnh cưới", date: "15/03/2025" },
-    { id: 2, name: "David Lee", phone: "0987-654-321", address: "456 Đường XYZ, TP.HCM", note: "Chụp ngoài trời, năng động", avatar: "/images/user2.jpg", request: "Chụp kỷ yếu", date: "20/03/2025" },
-    { id: 3, name: "Emily Smith", phone: "0912-345-678", address: "789 Đường QWE, Đà Nẵng", note: "Chụp gia đình tại biển", avatar: "/images/user3.jpg", request: "Chụp ảnh gia đình", date: "25/03/2025" },
+    { id: 1, name: "Alice Johnson", phone: "0123-456-789", address: "123 Đường ABC, Hà Nội", note: "Muốn phong cách cổ điển", avatar: "/public/images/navbar/avatar.jpg", request: "Chụp ảnh cưới", date: "15/03/2025" },
+    { id: 2, name: "David Lee", phone: "0987-654-321", address: "456 Đường XYZ, TP.HCM", note: "Chụp ngoài trời, năng động", avatar: "/public/images/navbar/avatar.jpg", request: "Chụp kỷ yếu", date: "20/03/2025" },
+    { id: 3, name: "Emily Smith", phone: "0912-345-678", address: "789 Đường QWE, Đà Nẵng", note: "Chụp gia đình tại biển", avatar: "/public/images/navbar/avatar.jpg", request: "Chụp ảnh gia đình", date: "25/03/2025" },
   ];
 
   useEffect(() => {

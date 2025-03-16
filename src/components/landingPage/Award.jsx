@@ -66,7 +66,7 @@ function Award() {
                             <SwiperSlide key={index}>
                                 <div className="flex flex-col items-center">
                                     <img
-                                        src={winner.images[0]}
+                                        src={"/public/images/navbar/b977b6d2d4dc6b888346f9e282771095.jpg"}
                                         alt={winner.name}
                                         className="w-fit h-80 object-cover rounded-lg"
                                     />
@@ -76,7 +76,7 @@ function Award() {
                                             .map((img, idx) => (
                                                 <img
                                                     key={idx}
-                                                    src={img}
+                                                    src={"/public/images/navbar/f7a5a868ac09dd109f91c23c177cc354.jpg"}
                                                     alt=""
                                                     className="w-26 h-30 object-cover rounded-md"
                                                 />
@@ -85,7 +85,7 @@ function Award() {
                                     <div className="text-center mt-6">
                                         <div className="w-20 h-20 mx-auto rounded-2xl overflow-hidden ">
                                             <img
-                                                src={winner.avatar}
+                                                src={"/public/images/navbar/avatar.jpg"}
                                                 alt={winner.name}
                                                 className="w-full h-full object-cover clip-hexagon"
                                             />

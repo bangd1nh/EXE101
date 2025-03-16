@@ -1,15 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-const ButtonWishList  = () => {
+const ButtonWishList = () => {
   return (
     <StyledWrapper>
-      <button className="button">
-        WishList
-      </button>
+      <Link to={"/wishlist"}>
+        <button className="button">WishList</button>
+      </Link>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
   .button {
@@ -30,7 +31,7 @@ const StyledWrapper = styled.div`
   }
 
   .button::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     left: -4px;
@@ -65,6 +66,7 @@ const StyledWrapper = styled.div`
 
   .button:active::before {
     scale: 0.7;
-  }`;
+  }
+`;
 
 export default ButtonWishList;

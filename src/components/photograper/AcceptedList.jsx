@@ -3,9 +3,9 @@ import React, { useState } from "react";
 const AcceptedList = () => {
   const [acceptedCustomers, setAcceptedCustomers] = useState([
     { id: 1, name: "Emma Brown", avatar: "/public/images/navbar/7c843a564a5e39502032cabcb0d4368b.jpg", progress: 50, uploads: [], selectedFiles: [], showUploads: false },
-    { id: 2, name: "Michael Smith", avatar: "/images/user4.jpg", progress: 30, uploads: [], selectedFiles: [], showUploads: false },
-    { id: 3, name: "Sophia Johnson", avatar: "/images/user5.jpg", progress: 70, uploads: [], selectedFiles: [], showUploads: false },
-    { id: 4, name: "Daniel Williams", avatar: "/images/user6.jpg", progress: 40, uploads: [], selectedFiles: [], showUploads: false },
+    { id: 2, name: "Michael Smith", avatar: "/public/images/navbar/avatar.jpg", progress: 30, uploads: [], selectedFiles: [], showUploads: false },
+    { id: 3, name: "Sophia Johnson", avatar: "/public/images/navbar/avatar.jpg", progress: 70, uploads: [], selectedFiles: [], showUploads: false },
+    { id: 4, name: "Daniel Williams", avatar: "/public/images/navbar/avatar.jpg", progress: 40, uploads: [], selectedFiles: [], showUploads: false },
     { id: 5, name: "Emma Brown", avatar: "/public/images/navbar/7c843a564a5e39502032cabcb0d4368b.jpg", progress: 50, uploads: [], selectedFiles: [], showUploads: false },
     { id: 6, name: "Emma Brown", avatar: "/public/images/navbar/7c843a564a5e39502032cabcb0d4368b.jpg", progress: 50, uploads: [], selectedFiles: [], showUploads: false }
   ]);

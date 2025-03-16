@@ -26,7 +26,7 @@ const FinishList = () => {
       phone: "0987-654-321", 
       address: "TP.HCM", 
       note: "Ảnh rất đẹp, sẽ quay lại!", 
-      avatar: "/images/user6.jpg", 
+      avatar: "/public/images/navbar/avatar.jpg", 
       images: [
         "/public/images/navbar/dceecfa49cb847f2b03e97c31a5ba8f1.jpg",
        "/public/images/navbar/f7a5a868ac09dd109f91c23c177cc354.jpg",
@@ -41,7 +41,7 @@ const FinishList = () => {
       phone: "0987-654-321", 
       address: "TP.HCM", 
       note: "Ảnh rất đẹp, sẽ quay lại!", 
-      avatar: "/images/user6.jpg", 
+      avatar: "/public/images/navbar/avatar.jpg", 
       images: [
         "/public/images/navbar/dceecfa49cb847f2b03e97c31a5ba8f1.jpg",
        "/public/images/navbar/f7a5a868ac09dd109f91c23c177cc354.jpg",
