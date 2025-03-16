@@ -9,6 +9,7 @@ import Photo from "./pages/Photo";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import PhotographerProfile from "./pages/PhotographerProfile";
+import PaymentPage from "./pages/PaymentPage";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     path="/photographer-profile"
                     element={<PhotographerProfile />}
                 />
+                <Route path="/payment" element={<PaymentPage />} />
             </Routes>
         </>
     );

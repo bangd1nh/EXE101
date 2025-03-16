@@ -86,9 +86,9 @@ function PhotographerProfile() {
                                 }}
                             >
                                 {follow ? (
-                                    <HeartOutlined className="transition-all duration-300 text-3xl" />
+                                    <HeartOutlined className="transition-all duration-300 text-3xl hover:scale-150" />
                                 ) : (
-                                    <HeartFilled className="transition-all duration-300 text-3xl" />
+                                    <HeartFilled className="transition-all duration-300 text-3xl hover:scale-150" />
                                 )}
                             </button>
                             <p className="font-extralight">Follow & Save</p>
