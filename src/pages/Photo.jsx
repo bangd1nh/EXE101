@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-
+import MiniNavBar from "../component/partials/MiniNavBar";
 import { major, photos } from "../constants/data";
-import MiniNavBar from "../components/partials/MiniNavbar";
 
 const BookmarkFlags = ({ colors }) => (
     <div className="absolute top-0 right-6 flex gap-1">
@@ -30,7 +29,7 @@ function Photo() {
 
     return (
         <div>
-            <MiniNavBar categories={categories} callback={handleCallBack}/>
+            <MiniNavBar categories={categories} callback={handleCallBack} />
             <div className="text-center mt-5">
                 <p className="text-2xl font-light">{category}</p>
             </div>
@@ -52,7 +51,7 @@ function Photo() {
                         <div key={index} className="relative group">
                             <img
                                 className="h-64 w-64 object-cover rounded-2xl"
-                                src={'/public/images/navbar/b977b6d2d4dc6b888346f9e282771095.jpg '}
+                                src={p.src}
                                 alt={`Gallery ${index}`}
                             />
                             <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center rounded-2xl">

@@ -14,7 +14,7 @@ function Galery() {
                         <img
                             src={"/public/images/navbar/7c843a564a5e39502032cabcb0d4368b.jpg"}
                             alt={`Image ${index + 1}`}
-                            className="w-full h-auto object-cover rounded-lg"
+                            className="w-64 h-64 object-cover rounded-lg"
                         />
                     </div>
                 ))}

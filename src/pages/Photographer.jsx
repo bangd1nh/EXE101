@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import MiniNavBar from "../component/partials/MiniNavBar";
 import {
     Box,
     Button,
@@ -12,12 +12,9 @@ import {
     Slider,
     Typography,
 } from "@mui/material";
-
+import PhotographerCard from "../component/photographer/PhotographerCard";
 import { major, photographers } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import MiniNavBar from "../components/partials/MiniNavbar";
-import PhotographerCard from "../components/photograper/PhotographerCard";
-
 
 function Photographer() {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -218,7 +215,7 @@ function Photographer() {
                 {ps.map((p, index) => {
                     return (
                         <div className="mt-5" key={index}>
-                            <PhotographerCard photographer={p}/>
+                            <PhotographerCard photographer={p} />
                         </div>
                     );
                 })}

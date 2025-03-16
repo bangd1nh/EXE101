@@ -17,6 +17,7 @@ import {
 
 import "/public/css/style.css";
 import { Link } from "react-router-dom";
+import "./style.css";
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
@@ -134,11 +135,10 @@ function Register() {
                 </div>
                 <div className="mt-5">
                     <Link to={"/login"}>
-                    <Button variant="contained" className="w-full">
-                        <p>Sign in</p>
-                    </Button>
+                        <Button variant="contained" className="w-full">
+                            <p>Sign in</p>
+                        </Button>
                     </Link>
-
                 </div>
                 <div className="mt-5 flex justify-center items-center">
                     <div className="border-t w-full border-stone-500"></div>
