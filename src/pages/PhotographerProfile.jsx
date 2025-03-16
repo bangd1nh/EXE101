@@ -14,8 +14,7 @@ import {
 } from "@ant-design/icons";
 import { Button } from "@mui/material";
 import Photo from "./Photo";
-import Footer from "../components/partials/Footer";
-// import Footer from "../component/partials/Footer";
+import { useNavigate } from "react-router";
 
 function PhotographerProfile() {
     const [follow, setFollow] = useState(false);
@@ -23,6 +22,7 @@ function PhotographerProfile() {
         photographerProfile.major[0]
     );
     const [galery, setGalery] = useState(photos);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -102,6 +102,9 @@ function PhotographerProfile() {
                         variant="outlined"
                         className="w-full"
                         startIcon={<PhoneOutlined />}
+                        onClick={() => {
+                            navigate("/contactForm");
+                        }}
                     >
                         Show Number
                     </Button>
@@ -192,7 +195,6 @@ function PhotographerProfile() {
                     </button>
                 </div>
             </div>
-            <Footer />
         </>
     );
 }

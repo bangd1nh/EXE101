@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import MiniNavBar from "../component/partials/MiniNavBar";
 import { major, photos } from "../constants/data";
 import MiniNavBar from "../components/partials/MiniNavbar";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 
 const BookmarkFlags = ({ colors }) => (
     <div className="absolute top-0 right-6 flex gap-1">
@@ -55,7 +56,11 @@ function Photo() {
                                 src={p.src}
                                 alt={`Gallery ${index}`}
                             />
-                            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center rounded-2xl">
+                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center rounded-2xl">
+                                <img
+                                    src="ava.jpg"
+                                    className="h-12 w-12 object-cover rounded-4xl"
+                                />
                                 <p className="font-semibold">{p.author}</p>
                                 <div className="flex gap-3 mt-2 text-sm">
                                     <span>❤️ {p.likes}</span>
@@ -69,6 +74,31 @@ function Photo() {
                         </div>
                     ))}
                 </div>
+            </div>
+            <div className="flex justify-center gap-4 mt-5 mb-20">
+                <button className="hover:cursor-pointer">
+                    <ArrowLeftOutlined />
+                </button>
+                {Array(5)
+                    .fill(0)
+                    .map((_, index) => {
+                        return (
+                            <button
+                                key={index}
+                                className={
+                                    `hover:cursor-pointer border px-2 rounded  hover:border-black duration-300 ` +
+                                    (index === 0
+                                        ? "border-black"
+                                        : "border-gray-300")
+                                }
+                            >
+                                {index}
+                            </button>
+                        );
+                    })}
+                <button className="hover:cursor-pointer">
+                    <ArrowRightOutlined />
+                </button>
             </div>
         </div>
     );

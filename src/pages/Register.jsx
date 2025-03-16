@@ -16,8 +16,9 @@ import {
 } from "@ant-design/icons";
 
 import "/public/css/style.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./style.css";
+import { Link } from "react-router";
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
