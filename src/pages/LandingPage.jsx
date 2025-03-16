@@ -3,7 +3,6 @@ import ImageSwiper from "../components/landingPage/ImageSwiper";
 import Galery from "../components/landingPage/Galery";
 import Award from "../components/landingPage/Award";
 import FeedBack from "../components/landingPage/FeedBack";
-import Footer from "../components/partials/Footer";
 
 function LandingPage() {
     const hashTag = [
@@ -44,7 +43,6 @@ function LandingPage() {
             </div>
             <Award />
             <FeedBack />
-            <Footer />
         </>
     );
 }

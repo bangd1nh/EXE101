@@ -12,7 +12,7 @@ import { Button } from "antd";
 
 function PaymentPage() {
     return (
-        <div className="grid grid-cols-2 h-screen bg-gray-100">
+        <div className="grid grid-cols-2 h-auto bg-gray-100">
             <div className="bg-indigo-500 ms-20 mt-20 mb-20 text-white">
                 <div className="p-20">
                     <p className="text-5xl font-light">100000000 VND</p>
