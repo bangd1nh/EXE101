@@ -95,7 +95,12 @@ function PhotographerProfile() {
                             <p className="font-extralight">Follow & Save</p>
                         </div>
                     </div>
-                    <button className="bg-blue-500 text-white px-8 py-3 rounded-lg w-full hover:bg-indigo-700 duration-300">
+                    <button
+                        className="bg-blue-500 text-white px-8 py-3 rounded-lg w-full hover:bg-indigo-700 duration-300"
+                        onClick={() => {
+                            navigate("/chat");
+                        }}
+                    >
                         Send a message
                     </button>
                     <Button

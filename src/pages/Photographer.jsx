@@ -12,10 +12,11 @@ import {
     Slider,
     Typography,
 } from "@mui/material";
-import PhotographerCard from "../component/photographer/PhotographerCard";
+// import PhotographerCard from "../component/photographer/PhotographerCard";
 import { major, photographers } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import MiniNavBar from "../components/partials/MiniNavbar";
+import PhotographerCard from "../components/photograper/PhotographerCard";
 
 function Photographer() {
     const [anchorEl, setAnchorEl] = useState(null);
