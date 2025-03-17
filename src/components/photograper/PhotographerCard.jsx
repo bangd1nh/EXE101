@@ -1,9 +1,10 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { PhoneOutlined, WhatsAppOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function PhotographerCard({ photographer }) {
+    const navigate = useNavigate();
     return (
         <div className="p-6 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-6">
             <div className="flex-shrink-0 text-center">
@@ -59,8 +60,19 @@ function PhotographerCard({ photographer }) {
                     >
                         Add to WishList
                     </Button>
-                    <Button variant="outlined">Visit profile</Button>
-                    <Button variant="contained" color="primary">
+                    <Button
+                        variant="outlined"
+                        onClick={() => {
+                            navigate("/photographer-profile");
+                        }}
+                    >
+                        Visit profile
+                    </Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => navigate("/chat")}
+                    >
                         Send a message
                     </Button>
                 </div>
