@@ -24,6 +24,7 @@ import {
     WhatsAppOutlined,
     TwitterOutlined,
 } from "@ant-design/icons";
+import ChatingPage from "./pages/ChatingPage";
 
 function App() {
     // const location = useLocation();
@@ -50,6 +51,7 @@ function App() {
                     element={<PhotographerProfile />}
                 />
                 <Route path="/payment" element={<PaymentPage />} />
+                <Route path="/chat" element={<ChatingPage />} />
             </Routes>
             <div className="fixed right-0 top-52 z-50 border p-3 flex-col flex gap-10 rounded-l-3xl border-gray-500">
                 <FacebookOutlined className="text-2xl hover:scale-150 duration-300 hover:cursor-pointer" />

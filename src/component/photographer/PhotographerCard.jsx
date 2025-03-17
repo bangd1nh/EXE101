@@ -57,7 +57,11 @@ function PhotographerCard({ photographer }) {
                     >
                         Visit profile
                     </Button>
-                    <Button variant="contained" color="primary">
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => navigate("/chat")}
+                    >
                         Send a message
                     </Button>
                 </div>
