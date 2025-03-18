@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ButtonWishList from "./ButtonWishList";
 import { Link, useNavigate } from "react-router-dom";
+import "./style.css";
 
 const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -28,7 +29,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white shadow-lg p-4 relative z-50">
+        <nav className="bg-white shadow-lg p-4 relative z-50">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <Link to={"/"}>
@@ -38,7 +39,7 @@ const Navbar = () => {
                             alt="Logo"
                             className="w-12 h-12 rounded-full border-2 border-gray-600"
                         />
-                        <span className="text-2xl font-bold tracking-wide">
+                        <span className="text-2xl font-bold tracking-wide text-[#f27457]">
                             FrameMate
                         </span>
                     </div>
@@ -54,7 +55,7 @@ const Navbar = () => {
                             }}
                             className="hover:text-gray-300 transition duration-300"
                         >
-                            Photographers
+                            Các nhiếp ảnh gia
                         </button>
                         {openDropdown === "photographers" && (
                             <ul
@@ -85,7 +86,7 @@ const Navbar = () => {
                             }}
                             className="hover:text-gray-300 transition duration-300"
                         >
-                            Customer
+                            Khách Hàng
                         </button>
                         {openDropdown === "customer" && (
                             <ul
@@ -111,7 +112,7 @@ const Navbar = () => {
                         <Link to={"/photos"}>
                             {" "}
                             <a className="hover:text-gray-300 transition duration-300">
-                                Photos
+                                Thư viện Ảnh
                             </a>
                         </Link>
                     </li>
@@ -120,7 +121,7 @@ const Navbar = () => {
                             href="#"
                             className="hover:text-gray-300 transition duration-300"
                         >
-                            Forum
+                            Đặt lịch
                         </a>
                     </li>
                     <li>
@@ -128,7 +129,15 @@ const Navbar = () => {
                             href="#"
                             className="hover:text-gray-300 transition duration-300"
                         >
-                            MyWed Awards
+                            Sự kiện
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href="/about"
+                            className="hover:text-gray-300 transition duration-300"
+                        >
+                            Về Framemate
                         </a>
                     </li>
                 </ul>

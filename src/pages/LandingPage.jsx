@@ -31,7 +31,7 @@ function LandingPage() {
         <>
             <ImageSwiper />
             <Galery />
-            <div className="justify-center text-center text-sm">
+            {/* <div className="justify-center text-center text-sm">
                 <p>And thousands more of splendid photos by topics:</p>
             </div>
             <div className="max-w-5xl mx-auto p-4 flex flex-wrap gap-2 justify-center">
@@ -40,7 +40,7 @@ function LandingPage() {
                         {hashTag}
                     </button>
                 ))}
-            </div>
+            </div> */}
             <Award />
             <FeedBack />
         </>

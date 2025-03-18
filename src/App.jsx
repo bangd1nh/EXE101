@@ -25,6 +25,7 @@ import {
     TwitterOutlined,
 } from "@ant-design/icons";
 import ChatingPage from "./pages/ChatingPage";
+import About from "./pages/About";
 
 function App() {
     // const location = useLocation();
@@ -52,11 +53,12 @@ function App() {
                 />
                 <Route path="/payment" element={<PaymentPage />} />
                 <Route path="/chat" element={<ChatingPage />} />
+                <Route path="/about" element={<About />} />
             </Routes>
-            <div className="fixed right-0 top-52 z-50 border p-3 flex-col flex gap-10 rounded-l-3xl border-gray-500">
-                <FacebookOutlined className="text-2xl hover:scale-150 duration-300 hover:cursor-pointer" />
-                <WhatsAppOutlined className="text-2xl hover:scale-150 duration-300 hover:cursor-pointer" />
-                <TwitterOutlined className="text-2xl hover:scale-150 duration-300 hover:cursor-pointer" />
+            <div className="fixed right-0 top-52 z-50 p-3 flex-col flex gap-10 rounded-l-3xl border-gray-500 bg-white">
+                <FacebookOutlined className="text-3xl hover:scale-150 duration-300 hover:cursor-pointer" />
+                <WhatsAppOutlined className="text-3xl hover:scale-150 duration-300 hover:cursor-pointer" />
+                <TwitterOutlined className="text-3xl hover:scale-150 duration-300 hover:cursor-pointer" />
             </div>
             <Footer />
         </>
