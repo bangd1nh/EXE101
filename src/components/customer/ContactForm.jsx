@@ -29,7 +29,7 @@ const ContactForm = () => {
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-6">
             <div className="w-full max-w-lg bg-white shadow-lg rounded-xl p-6">
-                <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">
+                <h2 className="text-2xl font-bold text-center text-[#e5b378] mb-4">
                     Liên Hệ Nhiếp Ảnh Gia
                 </h2>
                 <p className="text-center text-gray-500 mb-6">
@@ -91,7 +91,7 @@ const ContactForm = () => {
 
                     <button
                         type="submit"
-                        className="w-full bg-[#1E293B] text-white py-3 rounded-lg hover:bg-[#3B475B] transition-all duration-300 shadow-md"
+                        className="w-full bg-[#e5b378] text-white py-3 rounded-lg hover:bg-[#f27457] transition-all duration-300 shadow-md"
                         onClick={(e) => handleSubmit(e)}
                     >
                         Gửi Yêu Cầu
