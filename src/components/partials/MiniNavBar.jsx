@@ -18,7 +18,7 @@ function MiniNavBar({ categories, callback }) {
                     <div
                         className={
                             (selectedCat === cat ? "border-b-[1px] " : "") +
-                            `p-5 group mx-10 hover:border-b-[1px] h-16 duration-300 ease-linear`
+                            `p-5 group mx-10 hover:border-b-[1px] h-16 duration-300 ease-linear text-[#f27457]`
                         }
                         onClick={() => {
                             handleCallBack(cat);
@@ -28,8 +28,10 @@ function MiniNavBar({ categories, callback }) {
                     >
                         <p
                             className={
-                                (selectedCat === cat ? "text-stone-700 " : "") +
-                                `text-stone-400 font-semibold duration-300 group-hover:text-stone-700 hover:cursor-default`
+                                (selectedCat === cat
+                                    ? "text-[#f27457]"
+                                    : "text-stone-400") +
+                                ` font-semibold duration-300 group-hover:text-[#f27457] hover:cursor-default text-2xl`
                             }
                             key={index}
                         >

@@ -1,40 +1,41 @@
 import React from "react";
 
+import {
+    FacebookOutlined,
+    TikTokOutlined,
+    InstagramOutlined,
+} from "@ant-design/icons";
+
 const Footer = () => {
     return (
-        <footer className="bg-gray-100 py-6 px-10 text-sm text-gray-600">
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-center md:text-left">
-                    <a href="#" className="hover:underline">
-                        Terms
-                    </a>
-                    <a href="#" className="hover:underline">
-                        Advertising
-                    </a>
-                    <a href="#" className="hover:underline">
-                        Contact us
-                    </a>
-                    <a href="#" className="hover:underline">
-                        MyWed logos
-                    </a>
-                    <a href="#" className="hover:underline">
-                        About us
-                    </a>
-                    <a href="#" className="hover:underline">
-                        Privacy policy
-                    </a>
+        <footer className="bg-gray-200 py-6 px-10 text-sm ">
+            <div className="max-w-6xl mx-auto flex gap-5">
+                <img src="/newlogo-removebg-preview.png" className="h-50" />
+                <div className="flex flex-col gap-2">
+                    <p className="text-4xl">Your moment Our Passion</p>
+                    <p className="text-3xl">Công ty TNHH Framate</p>
+                    <p className="font-light">
+                        Địa chỉ: Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit.
+                    </p>
+                    <p className="font-light">
+                        Mã số doanh nghiệp :00000000000
+                    </p>
+                    <p className="font-light">Điện thoại: 094171919</p>
+                    <div className="text-3xl flex gap-5">
+                        <FacebookOutlined />
+                        <TikTokOutlined />
+                        <InstagramOutlined />
+                    </div>
                 </div>
-
-                <div className="flex flex-col items-center md:items-end gap-2 mt-4 md:mt-0">
-                    <select className="border px-4 py-1 rounded-md">
-                        <option>🇬🇧 English</option>
-                        <option>🇻🇳 Vietnamese</option>
-                    </select>
-                    <select className="border px-4 py-1 rounded-md">
-                        <option>VND Vietnamese đồng</option>
-                        <option>USD US Dollar</option>
-                    </select>
-                </div>
+            </div>
+            <div className="w-full border-t mt-5 mx-auto border-gray-400"></div>
+            <div className=" flex-row flex justify-between w-5xl mx-auto mt-5">
+                <p className="font-light">Về chúng tôi</p>
+                <p className="font-light">Các câu hỏi thường gặp</p>
+                <p className="font-light">Các điều khoảng dịch vụ</p>
+                <p className="font-light">Chính sách bảo mật</p>
+                <p className="font-light">Quy trình chụp hình </p>
             </div>
         </footer>
     );

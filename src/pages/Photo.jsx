@@ -20,9 +20,14 @@ const BookmarkFlags = ({ colors }) => (
 );
 
 function Photo() {
-    const categories = ["Nature", "Wildlife", "Urban", "Portrait", "Abstract"];
+    const categories = [
+        "Cặp Đôi",
+        "Đám Cưới",
+        "Cá Nhân",
+        "Gia Đình",
+        "Học sinh - Sinh viên",
+    ];
     const [category, setCategory] = useState(categories[0]);
-    const [majors, setMajors] = useState(major);
     const [galery, setGalery] = useState(photos);
 
     const handleCallBack = (data) => {
@@ -33,10 +38,12 @@ function Photo() {
         <div>
             <MiniNavBar categories={categories} callback={handleCallBack} />
             <div className="text-center mt-5">
-                <p className="text-2xl font-light">{category}</p>
+                <p className="text-3xl font-semibold text-[#f27457]">
+                    {category}
+                </p>
             </div>
 
-            <div className="flex justify-center gap-5 mt-5">
+            {/* <div className="flex justify-center gap-5 mt-5">
                 {majors.map((m, index) => (
                     <div
                         key={index}
@@ -45,7 +52,7 @@ function Photo() {
                         <button className="text-xl font-semibold">{m}</button>
                     </div>
                 ))}
-            </div>
+            </div> */}
 
             <div className="max-w-6xl mx-auto px-10 mt-20">
                 <div className="grid grid-cols-4 gap-4">

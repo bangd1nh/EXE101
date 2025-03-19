@@ -5,13 +5,16 @@ function FeedBack() {
     const navigate = useNavigate();
     return (
         <div>
-            <p className="text-center">
-                These photographers are already with us
+            <p className="text-center text-[#f27457] text-3xl my-5 font-bold uppercase">
+                Đánh giá của khách hàng
             </p>
             <div className="grid grid-cols-3 mx-auto w-5xl gap-5">
                 <div className="border-2 border-gray-300 rounded-3xl p-10">
-                    <img src="/public/images/navbar/avatar.jpg" className="rounded-full" />
-                    <p className="text-center font-semibold text-indigo-600 mt-5 ">
+                    <img
+                        src="/public/images/navbar/avatar.jpg"
+                        className="rounded-full"
+                    />
+                    <p className="text-center font-semibold text-[#f27457] mt-5 ">
                         Bagdnh
                     </p>
                     <p className="font-bold">
@@ -26,8 +29,11 @@ function FeedBack() {
                     </p>
                 </div>
                 <div className="border-2 border-gray-300 rounded-3xl p-10">
-                    <img src="/public/images/navbar/avatar.jpg" className="rounded-full" />
-                    <p className="text-center font-semibold text-indigo-600 mt-5 ">
+                    <img
+                        src="/public/images/navbar/avatar.jpg"
+                        className="rounded-full"
+                    />
+                    <p className="text-center font-semibold text-[#f27457] mt-5 ">
                         Bagdnh
                     </p>
                     <p className="font-bold">
@@ -42,8 +48,11 @@ function FeedBack() {
                     </p>
                 </div>
                 <div className="border-2 border-gray-300 rounded-3xl p-10">
-                    <img src="/public/images/navbar/avatar.jpg" className="rounded-full" />
-                    <p className="text-center font-semibold text-indigo-600 mt-5 ">
+                    <img
+                        src="/public/images/navbar/avatar.jpg"
+                        className="rounded-full"
+                    />
+                    <p className="text-center font-semibold text-[#f27457] mt-5 ">
                         Bagdnh
                     </p>
                     <p className="font-bold">
@@ -66,7 +75,7 @@ function FeedBack() {
                 </p>
                 <div className="text-center mt-10 mb-10">
                     <button
-                        className="text-white bg-indigo-500 hover:bg-indigo-800 px-20 py-5 rounded-3xl text-2xl font-semibold duration-300"
+                        className="text-white bg-[#e5b378] hover:bg-[#f27457] px-20 py-5 rounded-3xl text-2xl font-semibold duration-300"
                         onClick={() => navigate("/login")}
                     >
                         Join

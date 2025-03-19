@@ -14,45 +14,57 @@ function ImageSwiper() {
                 spaceBetween={30}
                 centeredSlides={true}
                 autoplay={{
-                    delay: 1500,
+                    delay: 1000,
                     disableOnInteraction: false,
                 }}
+                speed={1000}
                 modules={[Autoplay]}
                 className="w-full h-lvh"
-                allowTouchMove={false}
+                allowTouchMove={true}
             >
                 <SwiperSlide>
-                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
+                    <img
+                        src="/IMG_6713.JPG"
+                        className="w-full h-full object-cover"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
+                    <img
+                        src="/IMG_6714.JPG"
+                        className="w-full h-full object-cover"
+                    />
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="/public/images/landing/343d49d07d50b574ce8bb0cd5d33d60f.jpg" className="w-full h-full object-cover" />
+                    <img
+                        src="/IMG_6715.JPG"
+                        className="w-full h-full object-cover"
+                    />
                 </SwiperSlide>
             </Swiper>
-            <div className="absolute z-10 text-center text-gray-700 flex-row">
-                <p style={{color:'white'}} className="text-5xl mb-10">
+            <div className="absolute z-10 text-center text-gray-700 flex-row font-light">
+                {/* <p style={{ color: "white" }} className="text-5xl mb-10">
                     More than 45 000 wedding and family photographers in the
                     entire world
-                </p>
-                <p style={{color:'white'}} className="text-4xl mb-10">
-                    Find the best photographers near me:
+                </p> */}
+                <p style={{ color: "white" }} className="text-4xl mb-10">
+                    Tìm nhiếp ảnh gia gần tôi:
                 </p>
                 <div>
-                    <TextField
+                    {/* <TextField
                         id="outlined-basic"
                         label="Contry Or City"
                         variant="outlined"
                         className="w-md"
                         // fullWidth
+                    /> */}
+                    <input
+                        type="text"
+                        placeholder="Tìm nhiếp ảnh gia "
+                        className="text-white border-white border p-5 w-3xl rounded-2xl text-3xl"
                     />
                 </div>
-                <button className="bg-indigo-500 rounded-2xl px-10 py-5 mt-10 text-white text-xl font-semibold hover:bg-indigo-800 duration-300">
-                    Find a photographer
+                <button className="bg-[#e5b378] rounded-2xl px-10 py-5 mt-10 text-white text-xl font-semibold hover:bg-[#f27457] duration-300">
+                    Tìm nhiếp ảnh gia
                 </button>
             </div>
         </div>

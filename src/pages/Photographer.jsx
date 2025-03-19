@@ -73,7 +73,7 @@ function Photographer() {
                 <p className="text-center font-light text-3xl mt-5">
                     World's Best Wedding Photographers
                 </p>
-                <div className="flex gap-5 justify-center mt-5">
+                {/* <div className="flex gap-5 justify-center mt-5">
                     {countries.map((c, index) => {
                         return (
                             <p
@@ -84,12 +84,12 @@ function Photographer() {
                             </p>
                         );
                     })}
-                </div>
-                <div className="text-center mt-5">
+                </div> */}
+                {/* <div className="text-center mt-5">
                     <button className="bg-gray-400/25 rounded-[10%] px-5 py-1 text-blue-400 hover:bg-gray-400/75 duration-300 hover:cursor-pointer transition ease">
                         Choose Location
                     </button>
-                </div>
+                </div> */}
                 <div className="flex mt-5 justify-center">
                     <FormControl
                         sx={{
