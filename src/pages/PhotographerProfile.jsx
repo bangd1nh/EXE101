@@ -49,12 +49,14 @@ function PhotographerProfile() {
                         <div className="flex items-center gap-2">
                             <ClockCircleOutlined />{" "}
                             <span>
-                                Joined on {photographerProfile.joiningAt}
+                                Tham gia vào {photographerProfile.joiningAt}
                             </span>
                         </div>
                         <div className="flex items-center gap-2">
                             <GlobalOutlined />{" "}
-                            <span>Speaks: {photographerProfile.language}</span>
+                            <span>
+                                Ngôn ngữ: {photographerProfile.language}
+                            </span>
                         </div>
                     </div>
                     <div className="flex flex-col gap-3 mt-4">
@@ -77,7 +79,7 @@ function PhotographerProfile() {
                                 {photographerProfile.follower}
                             </p>
                             <p className="text-base font-extralight">
-                                Followers
+                                Người theo dõi
                             </p>
                         </div>
                         <div className="flex items-center gap-5">
@@ -92,7 +94,7 @@ function PhotographerProfile() {
                                     <HeartFilled className="transition-all duration-300 text-3xl hover:scale-150" />
                                 )}
                             </button>
-                            <p className="font-extralight">Follow & Save</p>
+                            <p className="font-extralight">Lưu và Theo dõi</p>
                         </div>
                     </div>
                     <button
@@ -101,7 +103,7 @@ function PhotographerProfile() {
                             navigate("/chat");
                         }}
                     >
-                        Send a message
+                        Gửi tin nhắn
                     </button>
                     <Button
                         variant="outlined"
@@ -111,7 +113,7 @@ function PhotographerProfile() {
                             navigate("/contactForm");
                         }}
                     >
-                        Show Number
+                        Đặt Lịch
                     </Button>
                     <Button
                         variant="outlined"
@@ -148,8 +150,7 @@ function PhotographerProfile() {
             </div>
             <div className="text-center mt-5">
                 <p className="text-3xl font-light">
-                    {selectedMajor.name} shoot at: {selectedMajor.price} per
-                    hour
+                    {selectedMajor.name} Giá: {selectedMajor.price} Mỗi giờ
                 </p>
                 <div className="max-w-6xl mx-auto px-10 mt-20">
                     <div className="grid grid-cols-4 gap-4">
