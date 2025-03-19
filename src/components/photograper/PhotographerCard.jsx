@@ -9,7 +9,7 @@ function PhotographerCard({ photographer }) {
         <div className="p-6 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-6">
             <div className="flex-shrink-0 text-center">
                 <img
-                    src={"/public/images/navbar/avatar.jpg"}
+                    src={photographer.profilePicture}
                     alt="Profile"
                     className="w-24 h-24 rounded-full mx-auto"
                 />
@@ -27,9 +27,7 @@ function PhotographerCard({ photographer }) {
                     {photographer.images.map((img, index) => (
                         <img
                             key={index}
-                            src={
-                                "/public/images/navbar/f7a5a868ac09dd109f91c23c177cc354.jpg"
-                            }
+                            src={img}
                             alt="Portfolio"
                             className="rounded-md h-52"
                         />
