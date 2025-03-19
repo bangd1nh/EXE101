@@ -62,7 +62,7 @@ const AcceptedList = () => {
   return (
     <div className="relative min-h-screen flex flex-col items-center bg-gray-100">
       {/* Header */}
-      <header className="w-full bg-gray-200 py-4 flex justify-between px-10 items-center shadow-md">
+      <header className="w-full  bg-[#e5b378] py-4 flex justify-between px-10 items-center shadow-md">
         <h1 className="text-xl font-bold tracking-wide text-gray-800">Accepted List</h1>
         <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition">
           Message
@@ -128,7 +128,7 @@ const AcceptedList = () => {
 
                     {/* Nút View Uploads */}
                     <button
-                      className="flex-1 bg-green-500 text-white py-2 rounded-md hover:bg-green-600 transition"
+                      className="flex-1 bg-[#e5b378] text-white py-2 rounded-md hover:bg-[#f27457] transition"
                       onClick={() => toggleUploads(customer.id)}
                     >
                       View Uploads

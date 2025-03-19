@@ -49,7 +49,7 @@ const WaitingList = () => {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center bg-gray-100">
-      <header className="w-full bg-gray-200 py-4 flex justify-between px-10 items-center shadow-md">
+      <header className="w-full  bg-[#e5b378] py-4 flex justify-between px-10 items-center shadow-md">
         <h1 className="text-xl font-bold tracking-wide text-gray-800">Waiting List</h1>
         <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition">
           Message
@@ -114,7 +114,7 @@ const WaitingList = () => {
                 {!rejectedCustomers.includes(customer.id) && !acceptedCustomers.includes(customer.id) && (
                   <div className="mt-4 flex gap-2">
                     <button
-                      className="flex-1 bg-gray-700 text-white py-2 rounded-md transition duration-300 hover:bg-green-500"
+                      className="flex-1 bg-[#e5b378] text-white py-2 rounded-md transition duration-300 hover:bg-green-500"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAccept(customer.id);
@@ -123,7 +123,7 @@ const WaitingList = () => {
                       Accept
                     </button>
                     <button
-                      className="flex-1 bg-gray-700 text-white py-2 rounded-md transition duration-300 hover:bg-red-500"
+                      className="flex-1 bg-[#e5b378] text-white py-2 rounded-md transition duration-300 hover:bg-red-500"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleReject(customer.id);
@@ -141,7 +141,7 @@ const WaitingList = () => {
 
       {/* Modal nhập lý do từ chối */}
       {showRejectModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center">
+        <div className="fixed inset-0 bg-[#e5b378] bg-opacity-60 flex justify-center items-center">
           <div className="bg-white p-6 rounded-lg shadow-xl w-96 text-center">
             <h2 className="text-xl font-bold mb-4 text-gray-800">Lý do từ chối</h2>
             <textarea

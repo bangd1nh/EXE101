@@ -96,7 +96,7 @@ const WishlistView = () => {
 
             {/* Button Hiển thị thêm */}
             <button 
-              className="mt-4 w-full bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition"
+              className="mt-4 w-full bg-[#e5b378] text-white px-4 py-2 rounded-lg hover:bg-[#f27457] transition"
               onClick={() => toggleExpand(item.id)}
             >
               {expandedItem === item.id ? "Hide Details" : "View Details"}
