@@ -58,7 +58,7 @@ const FinishList = () => {
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gray-100">
-            <header className="w-full bg-gray-200 py-4 flex justify-between px-10 items-center shadow-md">
+            <header className="w-full  bg-[#e5b378] py-4 flex justify-between px-10 items-center shadow-md">
                 <h1 className="text-xl font-bold tracking-wide text-gray-800">
                     {" "}
                     Finish List
