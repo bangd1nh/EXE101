@@ -16,11 +16,48 @@ import {
 } from "@ant-design/icons";
 
 import "./style.css";
+import { login, saveLoggedInUser } from "../services/authentication";
+import { useNavigate } from "react-router";
 
 function Login() {
-    const [showPass, setShowPass] = useState(false);
+    const [showPass, setShowPass] = useState(true);
+    const [user, setUser] = useState({
+        usernameOrEmail: "",
+        password: "",
+    });
+    const naviate = useNavigate();
+    const handleLogin = async () => {
+        try {
+            console.log(user);
+            const result = await login(user);
+            console.log(result);
+            alert(result.data.message);
+            if (result.status === 200) {
+                const token = "Bearer " + result.data.token;
+                localStorage.setItem("token", token);
+                const authenticatedUser = {
+                    userId: result.data.userId,
+                    role: result.data.role,
+                    verify: result.data.verify,
+                    email: result.data.email,
+                };
+                saveLoggedInUser(authenticatedUser);
+                naviate("/");
+            }
+        } catch (error) {
+            if (error.response.status === 404) {
+                alert("this username or email does not exist");
+            }
+            if (error.response.status === 400) {
+                alert("password or email wrong");
+            }
+            if (error.response.status === 500) {
+                alert("server error");
+            }
+        }
+    };
     return (
-        <div className="grid grid-cols-2 h-screen">
+        <div className="grid grid-cols-2">
             <div className="w-full h-full bg-gradient-login flex justify-center items-center">
                 <p className="text-4xl font-light">Welcome</p>
             </div>
@@ -42,6 +79,12 @@ function Login() {
                             label="Email"
                             variant="standard"
                             fullWidth
+                            onChange={(e) => {
+                                setUser({
+                                    ...user,
+                                    usernameOrEmail: e.target.value,
+                                });
+                            }}
                         />
                     </Box>
                     <Box
@@ -60,6 +103,9 @@ function Login() {
                             label="Password"
                             variant="standard"
                             fullWidth
+                            onChange={(e) =>
+                                setUser({ ...user, password: e.target.value })
+                            }
                             type={showPass ? "password" : "text"}
                             slotProps={{
                                 input: {
@@ -87,7 +133,11 @@ function Login() {
                     <p className="font-semibold text-lg">Remember me ?</p>
                 </div>
                 <div className="mt-5">
-                    <Button variant="contained" className="w-full">
+                    <Button
+                        variant="contained"
+                        className="w-full"
+                        onClick={handleLogin}
+                    >
                         <p>Sign in</p>
                     </Button>
                 </div>

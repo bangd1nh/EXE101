@@ -63,17 +63,16 @@ const Navbar = () => {
                                 className="absolute left-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                             >
                                 <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                                <li className="hover:bg-gray-700 px-4 py-3 rounded-t-lg text-white">
+                                    {/* <li className="hover:bg-gray-700 px-4 py-3 rounded-t-lg text-white"> */}
                                     <Link to="/photographer">
                                         {" "}
-                                        <a href="/photographer" >Top</a>
+                                        <a href="/photographer">Top</a>
                                     </Link>
                                 </li>
                                 <li className="hover:bg-gray-200 px-4 py-3">
                                     <a href="#">Newcomers</a>
                                 </li>
                                 <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-
                                     <a href="#">Best Awards</a>
                                 </li>
                             </ul>
@@ -99,13 +98,14 @@ const Navbar = () => {
                                     <Link to="/waiting-list">Waiting List</Link>
                                 </li>
                                 <li className="hover:bg-gray-200 px-4 py-3">
-
                                     <Link to="/accepted-list">
                                         Accepted List
                                     </Link>
                                 </li>
-                                <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
+                                <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                                    <Link to="/waiting-list">Waiting List</Link>
                                 </li>
+                                <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg"></li>
                             </ul>
                         )}
                     </li>
@@ -173,7 +173,6 @@ const Navbar = () => {
                                     <a href="#">Settings</a>
                                 </li>
                                 <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-
                                     <Link to={"/login"}>
                                         <a>Login</a>
                                     </Link>

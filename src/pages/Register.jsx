@@ -19,12 +19,44 @@ import "/public/css/style.css";
 // import { Link } from "react-router-dom";
 import "./style.css";
 import { Link } from "react-router";
+import { register } from "../services/authentication";
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
     const [showPass1, setShowPass1] = useState(false);
+    const [newUser, setNewUser] = useState({
+        email: "",
+        password: "",
+        role: "CUSTOMER",
+    });
+    const [confirmPass, setConfirmPass] = useState("");
+
+    // const [validate, setValidate] = useState(true)
+    const [processing, setProcessing] = useState(false);
+    const [roleChecked, setRoleChecked] = useState("CUSTOMER");
+
+    const handleSignUp = async () => {
+        if (newUser.password !== confirmPass) {
+            alert("confirm password not match");
+            setNewUser({
+                ...newUser,
+                password: "",
+            });
+        } else {
+            try {
+                setProcessing(true);
+                const result = await register(newUser);
+                alert(result.data.message);
+            } catch (error) {
+                alert(error);
+            } finally {
+                setProcessing(false);
+            }
+        }
+    };
+
     return (
-        <div className="grid grid-cols-2 h-screen">
+        <div className="grid grid-cols-2">
             <div className="px-50 py-20">
                 <p className="text-4xl font-light">Register</p>
                 <div className="mt-20">
@@ -43,6 +75,12 @@ function Register() {
                             label="Email"
                             variant="standard"
                             fullWidth
+                            onChange={(e) =>
+                                setNewUser({
+                                    ...newUser,
+                                    email: e.target.value,
+                                })
+                            }
                         />
                     </Box>
                     <Box
@@ -80,6 +118,12 @@ function Register() {
                                     ),
                                 },
                             }}
+                            onChange={(e) =>
+                                setNewUser({
+                                    ...newUser,
+                                    password: e.target.value,
+                                })
+                            }
                         />
                     </Box>
                     <Box
@@ -117,29 +161,50 @@ function Register() {
                                     ),
                                 },
                             }}
+                            onChange={(e) => setConfirmPass(e.target.value)}
                         />
                     </Box>
                 </div>
                 <div className="flex flex-col border-t mt-10 border-t-stone-500 items-start">
                     <div className="flex items-center">
-                        <Checkbox />
+                        <Checkbox
+                            id="photographer"
+                            checked={roleChecked === "PHOTOGRAPHER"}
+                            onChange={() => {
+                                setRoleChecked("PHOTOGRAPHER");
+                                setNewUser({
+                                    ...newUser,
+                                    role: "PHOTOGRAPHER",
+                                });
+                            }}
+                        />
                         <p className="font-semibold text-lg">
                             Register as Photographer ?
                         </p>
                     </div>
                     <div className="flex items-center">
-                        <Checkbox />
+                        <Checkbox
+                            id="client"
+                            checked={roleChecked === "CUSTOMER"}
+                            onChange={() => {
+                                setRoleChecked("CUSTOMER");
+                                setNewUser({ ...newUser, role: "CUSTOMER" });
+                            }}
+                        />
                         <p className="font-semibold text-lg">
                             Register as Client ?
                         </p>
                     </div>
                 </div>
                 <div className="mt-5">
-                    <Link to={"/login"}>
-                        <Button variant="contained" className="w-full">
-                            <p>Sign in</p>
-                        </Button>
-                    </Link>
+                    <Button
+                        variant="contained"
+                        className="w-full"
+                        onClick={handleSignUp}
+                        disabled={processing}
+                    >
+                        {processing ? <p>Processing....</p> : <p>Sign up</p>}
+                    </Button>
                 </div>
                 <div className="mt-5 flex justify-center items-center">
                     <div className="border-t w-full border-stone-500"></div>
