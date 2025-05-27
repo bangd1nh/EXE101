@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import MiniNavBar from "../component/partials/MiniNavBar";
 import {
     Box,
@@ -17,8 +17,27 @@ import { major, photographers } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import MiniNavBar from "../components/partials/MiniNavbar";
 import PhotographerCard from "../components/photograper/PhotographerCard";
+import { getAllPhotographers } from "../services/photographers";
 
 function Photographer() {
+    const [photographers1, setPhotographers1] = useState([]);
+
+    useEffect(() => {
+        getAllPhotographers()
+            .then((res) => {
+                if (
+                    res.data.message === "success" &&
+                    Array.isArray(res.data.payload)
+                ) {
+                    setPhotographers1(res.data.payload);
+                    console.log("Photographers loaded:", res.data.payload);
+                }
+            })
+            .catch((err) => console.log("Error loading photographers:", err));
+    }, []);
+
+    console.log(photographers1);
+
     const [anchorEl, setAnchorEl] = useState(null);
     const [value, setValue] = useState([0, 18000000]);
 
@@ -33,18 +52,6 @@ function Photographer() {
     const open = Boolean(anchorEl);
     const id = open ? "price-popover" : undefined;
     const categories = ["TOP RATED", "NEW"];
-    const countries = [
-        "Vietnam",
-        "Thailand",
-        "Malaysia",
-        "Singapore",
-        "Indonesia",
-        "Philippines",
-        "Myanmar",
-        "Cambodia",
-        "Laos",
-        "Brunei",
-    ];
 
     const handleCallBack = (data) => {
         console.log(data);
@@ -214,7 +221,7 @@ function Photographer() {
                 </div>
             </div>
             <div className="w-7xl mx-auto">
-                {ps.map((p, index) => {
+                {photographers1.map((p, index) => {
                     return (
                         <div className="mt-5" key={index}>
                             <PhotographerCard photographer={p} />
