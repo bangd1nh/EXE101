@@ -7,24 +7,25 @@ function PhotographerCard({ photographer }) {
     const navigate = useNavigate();
     return (
         <div className="p-6 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-6">
-            <div className="flex-shrink-0 text-center">
+            <div className="flex-shrink-0 min-w-1/6 text-center">
                 <img
-                    src={photographer.profilePicture}
+                    src={photographer.PhotographerId.Avatar}
                     alt="Profile"
                     className="w-24 h-24 rounded-full mx-auto"
                 />
                 <h2 className="text-lg font-bold text-blue-600 mt-2">
-                    {photographer.name}
+                    {photographer.PhotographerId.FirstName}{" "}
+                    {photographer.PhotographerId.LastName}
                 </h2>
                 <p className="text-sm text-gray-500">
-                    @{photographer.username} PRO+
+                    @{photographer.PhotographerId.Username} PRO+
                 </p>
-                <p className="text-sm text-gray-600">{photographer.location}</p>
+                <p className="text-sm text-gray-600">{photographer.Location}</p>
             </div>
 
             <div className="flex-1">
                 <div className="flex gap-2 overflow-auto">
-                    {photographer.images.map((img, index) => (
+                    {photographer.PhotoGraphs.map((img, index) => (
                         <img
                             key={index}
                             src={img}
@@ -34,11 +35,16 @@ function PhotographerCard({ photographer }) {
                     ))}
                 </div>
                 <p className="mt-4 text-gray-700 font-light">
-                    {photographer.bio}
+                    kinh nghiệm : {photographer.ExperienceYear}
                 </p>
-                <p className="mt-2 font-bold text-lg">{photographer.price}</p>
+                <p className="mt-4 text-gray-700 font-light">
+                    Thiết bị chuyên dụng : {photographer.Device}
+                </p>
+                <p className="mt-2 font-bold text-lg">
+                    {photographer.Price}/giờ
+                </p>
                 <p className="text-gray-500 text-sm">
-                    {photographer.minHours} hours minimum
+                    {photographer.Rating} Rating
                 </p>
                 <div className="mt-4 flex gap-3">
                     <Link to={"/contactForm"}>

@@ -10,5 +10,15 @@ export const getUserId = () => {
     const token = localStorage.getItem("token");
     if (!token) return null;
     const decodedToken = jwtDecode(token);
-    return decodedToken.userId;
+    return "/user/" + decodedToken.userId;
 };
+
+export const updateUserInfomation = (userId, updateUser) =>
+    axios.put(USER_BASE_URL + "/" + userId, updateUser);
+
+export const uploadAvatar = (userId, formData) =>
+    axios.post(USER_BASE_URL + "/uploadImage/" + userId, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    });
