@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ButtonWishList from "./ButtonWishList";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
+import { getUserId } from "../../services/user";
 
 const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -44,7 +45,6 @@ const Navbar = () => {
                         </span>
                     </div>
                 </Link>
-
                 {/* Menu */}
                 <ul className="flex space-x-8 text-lg font-medium">
                     {/* Photographers Dropdown */}
@@ -143,10 +143,7 @@ const Navbar = () => {
                         </a>
                     </li>
                 </ul>
-
-                {/* Profile + Icons */}
                 <div className="flex items-center space-x-6">
-                    {/* User Avatar Dropdown */}
                     <div className="relative group">
                         <button
                             onClick={() => toggleDropdown("user")}
@@ -163,20 +160,40 @@ const Navbar = () => {
                                 ref={dropdownRef}
                                 className="absolute right-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                             >
-                                <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                                    <a href="#">Profile</a>
-                                </li>
-                                <li className="hover:bg-gray-200 px-4 py-3">
-                                    <a href="#">Balance</a>
-                                </li>
-                                <li className="hover:bg-gray-200 px-4 py-3">
-                                    <a href="#">Settings</a>
-                                </li>
-                                <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-                                    <Link to={"/login"}>
-                                        <a>Login</a>
-                                    </Link>
-                                </li>
+                                {localStorage.getItem("token") ? (
+                                    <>
+                                        <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                                            <a href={getUserId()}>Profile</a>
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
+                                            <Link
+                                                to="/login"
+                                                onClick={() => {
+                                                    localStorage.removeItem(
+                                                        "token"
+                                                    );
+                                                }}
+                                            >
+                                                Logout
+                                            </Link>
+                                        </li>
+                                    </>
+                                ) : (
+                                    <>
+                                        <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                                            <a href="#">Profile</a>
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-3">
+                                            <a href="#">Balance</a>
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-3">
+                                            <a href="#">Settings</a>
+                                        </li>
+                                        <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
+                                            <Link to="/login">Login</Link>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
                         )}
                     </div>

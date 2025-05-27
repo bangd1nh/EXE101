@@ -14,3 +14,8 @@ export const saveLoggedInUser = (user) => {
     sessionStorage.setItem("verify", user.verify);
     sessionStorage.setItem("role", user.role);
 };
+
+export const getToken = () => {
+    const token = localStorage.getItem("token");
+    return token;
+};

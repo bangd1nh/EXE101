@@ -26,6 +26,7 @@ import {
 } from "@ant-design/icons";
 import ChatingPage from "./pages/ChatingPage";
 import About from "./pages/About";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
     // const location = useLocation();
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/payment" element={<PaymentPage />} />
                 <Route path="/chat" element={<ChatingPage />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/:userId" element={<UserProfile />} />
             </Routes>
             <div className="fixed right-0 top-52 z-50 p-3 flex-col flex gap-10 rounded-l-3xl border-gray-500 bg-white">
                 <FacebookOutlined className="text-3xl hover:scale-150 duration-300 hover:cursor-pointer" />
