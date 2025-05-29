@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { photographerProfile, photos } from "../constants/data";
 import {
     ClockCircleOutlined,
@@ -14,36 +14,74 @@ import {
 } from "@ant-design/icons";
 import { Button } from "@mui/material";
 import Photo from "./Photo";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { getPhotographersById } from "../services/photographers.js";
 
 function PhotographerProfile() {
+    const { photographerId } = useParams();
+
     const [follow, setFollow] = useState(false);
     const [selectedMajor, setSelectedMajor] = useState(
         photographerProfile.major[0]
     );
-    const [galery, setGalery] = useState(photos);
+
     const navigate = useNavigate();
+
+    const [photographer, setPhotographer] = useState({
+        Description: "",
+        Device: "",
+        ExperienceYear: "",
+        Location: "",
+        PhotoGraphs: {
+            _id: "",
+            imgUrl: [],
+        },
+        PhotographerId: {
+            Avatar: "",
+            Email: "",
+            FirstName: "",
+            LastName: "",
+            PhoneNumber: "",
+            Username: "",
+            _id: "",
+        },
+        Price: "",
+        Rating: "",
+        _id: "",
+    });
+
+    useEffect(() => {
+        getPhotographersById(photographerId)
+            .then((res) => {
+                setPhotographer({ ...res.data.payload });
+                console.log(res);
+                console.log(photographer);
+            })
+            .catch((err) => console.log(err));
+    }, [photographerId]);
 
     return (
         <>
             <div className="w-7xl mx-auto p-8 rounded-lg bg-white grid grid-cols-4 gap-4">
                 <div className="flex justify-center items-center">
                     <img
-                        src={photographerProfile.img}
-                        alt={photographerProfile.name}
+                        src={photographer.PhotographerId.Avatar}
+                        alt={photographer.PhotographerId.Username}
                         className="w-80 h-80 rounded-lg object-cover"
                     />
                 </div>
 
                 <div className="col-span-2">
                     <h1 className="text-3xl font-semibold text-blue-600">
-                        {photographerProfile.name}
+                        {photographer.PhotographerId.FirstName}{" "}
+                        {photographer.PhotographerId.LastName}
                     </h1>
-                    <p className="text-gray-600">
-                        {photographerProfile.location}
+                    <p className="text-gray-600">{photographer.Location}</p>
+                    <p className="mt-2 text-base font-light">
+                        {photographer.Description}
                     </p>
                     <p className="mt-2 text-base font-light">
-                        {photographerProfile.description}
+                        Device: {photographer.Device}
                     </p>
                     <div className="grid grid-cols-1 gap-4 mt-4 text-base text-gray-500">
                         <div className="flex items-center gap-2">
@@ -110,7 +148,7 @@ function PhotographerProfile() {
                         className="w-full"
                         startIcon={<PhoneOutlined />}
                         onClick={() => {
-                            navigate("/contactForm");
+                            navigate("/contactForm/" + photographerId);
                         }}
                     >
                         Đặt Lịch
@@ -154,14 +192,14 @@ function PhotographerProfile() {
                 </p>
                 <div className="max-w-6xl mx-auto px-10 mt-20">
                     <div className="grid grid-cols-4 gap-4">
-                        {galery.map((p, index) => (
+                        {photographer.PhotoGraphs.imgUrl.map((p, index) => (
                             <div key={index} className="relative group">
                                 <img
                                     className="h-64 w-64 object-cover rounded-2xl"
-                                    src={p.src}
+                                    src={p}
                                     alt={`Gallery ${index}`}
                                 />
-                                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center rounded-2xl">
+                                {/* <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white text-center rounded-2xl">
                                     <div className="flex gap-3 mt-2 text-sm">
                                         <span>❤️ {p.likes}</span>
                                         <span>💬 {p.comments}</span>
@@ -170,7 +208,7 @@ function PhotographerProfile() {
                                 </div>
                                 {p.bookmark.length > 0 && (
                                     <BookmarkFlags colors={p.bookmark} />
-                                )}
+                                )} */}
                             </div>
                         ))}
                     </div>

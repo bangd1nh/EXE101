@@ -22,3 +22,10 @@ export const uploadAvatar = (userId, formData) =>
             "Content-Type": "multipart/form-data",
         },
     });
+
+export const getId = () => {
+    const token = localStorage.getItem("token");
+    if (!token) return null;
+    const decodedToken = jwtDecode(token);
+    return decodedToken.userId;
+};

@@ -44,13 +44,16 @@ function App() {
                 <Route path="/accepted-list" element={<AcceptedList />} />
                 <Route path="/finish-list" element={<FinishList />} />
                 <Route path="/photographer" element={<Photographer />} />
-                <Route path="/contactForm" element={<ContactForm />} />
+                <Route
+                    path="/contactForm/:photographerId"
+                    element={<ContactForm />}
+                />
                 <Route path="/wishlist" element={<WishlistView />} />
                 <Route path="/photos" element={<Photo />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route
-                    path="/photographer-profile"
+                    path="/photographer-profile/:photographerId"
                     element={<PhotographerProfile />}
                 />
                 <Route path="/payment" element={<PaymentPage />} />

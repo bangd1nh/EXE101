@@ -11,7 +11,7 @@ function PhotographerCard({ photographer }) {
                 <img
                     src={photographer.PhotographerId.Avatar}
                     alt="Profile"
-                    className="w-24 h-24 rounded-full mx-auto"
+                    className="w-24 h-24 rounded-full mx-auto object-cover"
                 />
                 <h2 className="text-lg font-bold text-blue-600 mt-2">
                     {photographer.PhotographerId.FirstName}{" "}
@@ -25,7 +25,7 @@ function PhotographerCard({ photographer }) {
 
             <div className="flex-1">
                 <div className="flex gap-2 overflow-auto">
-                    {photographer.PhotoGraphs.map((img, index) => (
+                    {photographer.PhotoGraphs.imgUrl.map((img, index) => (
                         <img
                             key={index}
                             src={img}
@@ -67,7 +67,9 @@ function PhotographerCard({ photographer }) {
                     <Button
                         variant="outlined"
                         onClick={() => {
-                            navigate("/photographer-profile");
+                            navigate(
+                                "/photographer-profile/" + photographer._id
+                            );
                         }}
                     >
                         Visit profile
