@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function MiniNavBar({ categories, callback }) {
+const MiniNavBar = ({ categories, callback }) => {
     const [selectedCat, setSelectedCat] = useState(categories[0]);
 
     const handleCallBack = (cat) => {
@@ -42,6 +42,6 @@ function MiniNavBar({ categories, callback }) {
             })}
         </div>
     );
-}
+};
 
 export default MiniNavBar;

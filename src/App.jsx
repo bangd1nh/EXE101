@@ -28,6 +28,7 @@ import ChatingPage from "./pages/ChatingPage";
 import About from "./pages/About";
 import UserProfile from "./pages/UserProfile";
 import Notfound from "./pages/Notfound";
+import BookingCustomer from "./pages/BookingCustomer";
 
 function App() {
     // const location = useLocation();
@@ -59,7 +60,8 @@ function App() {
                 <Route path="/payment" element={<PaymentPage />} />
                 <Route path="/chat" element={<ChatingPage />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/user/:userId" element={<UserProfile />} />
+                <Route path="/user" element={<UserProfile />} />
+                <Route path="/customerBook" element={<BookingCustomer />} />
                 <Route path="/*" element={<Notfound />} />
             </Routes>
             <div className="fixed right-0 top-52 z-50 p-3 flex-col flex gap-10 rounded-l-3xl border-gray-500 bg-white">

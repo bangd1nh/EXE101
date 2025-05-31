@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import ButtonWishList from "./ButtonWishList";
 import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
-import { getUserId } from "../../services/user";
+import { getUserId, getUserRole } from "../../services/user";
 
 const Navbar = () => {
     const [openDropdown, setOpenDropdown] = useState(null);
@@ -80,35 +80,41 @@ const Navbar = () => {
                     </li>
 
                     {/* Customer Dropdown */}
-                    <li className="relative group">
-                        <button
-                            onClick={() => {
-                                toggleDropdown("customer");
-                            }}
-                            className="hover:text-gray-300 transition duration-300"
-                        >
-                            Khách Hàng
-                        </button>
-                        {openDropdown === "customer" && (
-                            <ul
-                                ref={dropdownRef}
-                                className="absolute left-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    {getUserRole() === "PHOTOGRAPHER" && (
+                        <li className="relative group">
+                            <button
+                                onClick={() => {
+                                    toggleDropdown("customer");
+                                }}
+                                className="hover:text-gray-300 transition duration-300"
                             >
-                                <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                                    <Link to="/waiting-list">Waiting List</Link>
-                                </li>
-                                <li className="hover:bg-gray-200 px-4 py-3">
-                                    <Link to="/accepted-list">
-                                        Accepted List
-                                    </Link>
-                                </li>
-                                <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                                    <Link to="/finish-list">finish List</Link>
-                                </li>
-                                <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg"></li>
-                            </ul>
-                        )}
-                    </li>
+                                Khách Hàng
+                            </button>
+                            {openDropdown === "customer" && (
+                                <ul
+                                    ref={dropdownRef}
+                                    className="absolute left-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                >
+                                    <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                                        <Link to="/waiting-list">
+                                            Waiting List
+                                        </Link>
+                                    </li>
+                                    <li className="hover:bg-gray-200 px-4 py-3">
+                                        <Link to="/accepted-list">
+                                            Accepted List
+                                        </Link>
+                                    </li>
+                                    <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                                        <Link to="/finish-list">
+                                            finish List
+                                        </Link>
+                                    </li>
+                                    <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg"></li>
+                                </ul>
+                            )}
+                        </li>
+                    )}
 
                     <li>
                         <Link to={"/photos"}>
@@ -118,14 +124,16 @@ const Navbar = () => {
                             </a>
                         </Link>
                     </li>
-                    <li>
-                        <a
-                            href="#"
-                            className="hover:text-gray-300 transition duration-300"
-                        >
-                            Đặt lịch
-                        </a>
-                    </li>
+                    {getUserRole() === "CUSTOMER" && (
+                        <li>
+                            <a
+                                href="/customerBook"
+                                className="hover:text-gray-300 transition duration-300"
+                            >
+                                Đặt lịch
+                            </a>
+                        </li>
+                    )}
                     <li>
                         <a
                             href="#"
@@ -163,7 +171,7 @@ const Navbar = () => {
                                 {localStorage.getItem("token") ? (
                                     <>
                                         <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                                            <a href={getUserId()}>Profile</a>
+                                            <a href="/user">Profile</a>
                                         </li>
                                         <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
                                             <Link

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+    getId,
     getUserProfile,
     updateUserInfomation,
     uploadAvatar,
@@ -7,7 +8,6 @@ import {
 import { useParams } from "react-router";
 
 function UserProfile() {
-    const { userId } = useParams();
     const [isEditing, setIsEditing] = useState(false);
     const [editedUser, setEditedUser] = useState({});
     const [processing, setProcessing] = useState(false);
@@ -25,6 +25,8 @@ function UserProfile() {
         Avatar: "",
     });
 
+    const userId = getId();
+
     useEffect(() => {
         getUserProfile(userId)
             .then((res) => {
@@ -32,17 +34,17 @@ function UserProfile() {
                 setUser({
                     ...userData,
                     userId: userData._id,
-                    Avatar:
-                        userData.Avatar || "https://via.placeholder.com/150",
+                    Avatar: userData.Avatar,
                 });
                 setEditedUser({
                     FirstName: userData.FirstName,
                     LastName: userData.LastName,
                     PhoneNumber: userData.PhoneNumber,
                 });
+                console.log(res);
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, [userId]);
 
     const handleEdit = () => {
         setIsEditing(true);
@@ -124,7 +126,8 @@ function UserProfile() {
                             src={
                                 processing
                                     ? "https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif"
-                                    : user.Avatar
+                                    : user.Avatar ||
+                                      "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
                             }
                             alt="Profile"
                             className="w-32 h-32 rounded-full object-cover"

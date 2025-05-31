@@ -24,3 +24,12 @@ export const acceptBookingRequest = (bookingId) =>
 
 export const rejectBookingRequest = (bookingId) =>
     axios.get(BOOKING_BASE_URL + "/book/reject/" + bookingId);
+
+export const getAcceptedBookingRequest = (photographerId) =>
+    axios.get(BOOKING_BASE_URL + "/book/acceptList/" + photographerId);
+
+export const doneBookingRequest = (bookingId) =>
+    axios.get(BOOKING_BASE_URL + "/book/done/" + bookingId);
+
+export const getCustomerBooking = (customerId) =>
+    axios.get(BOOKING_BASE_URL + "/book/customer/" + customerId);
