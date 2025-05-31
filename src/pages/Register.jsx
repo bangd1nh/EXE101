@@ -20,6 +20,7 @@ import "/public/css/style.css";
 import "./style.css";
 import { Link } from "react-router";
 import { register } from "../services/authentication";
+import RegisterModal from "../components/authentication/RegisterModal";
 
 function Register() {
     const [showPass, setShowPass] = useState(false);
@@ -34,6 +35,7 @@ function Register() {
     // const [validate, setValidate] = useState(true)
     const [processing, setProcessing] = useState(false);
     const [roleChecked, setRoleChecked] = useState("CUSTOMER");
+    const [toggleModal, setModal] = useState(false);
 
     const handleSignUp = async () => {
         if (newUser.password !== confirmPass) {
@@ -43,6 +45,7 @@ function Register() {
                 password: "",
             });
         } else {
+            setModal(false);
             try {
                 setProcessing(true);
                 const result = await register(newUser);
@@ -53,6 +56,10 @@ function Register() {
                 setProcessing(false);
             }
         }
+    };
+
+    const handleToggleModal = () => {
+        setModal(true);
     };
 
     return (
@@ -200,7 +207,7 @@ function Register() {
                     <Button
                         variant="contained"
                         className="w-full"
-                        onClick={handleSignUp}
+                        onClick={handleToggleModal}
                         disabled={processing}
                     >
                         {processing ? <p>Processing....</p> : <p>Sign up</p>}
@@ -233,6 +240,11 @@ function Register() {
             <div className="w-full h-full bg-gradient-login flex justify-center items-center">
                 <p className="text-4xl font-light">Welcome to FrameMate</p>
             </div>
+            <RegisterModal
+                isShow={toggleModal}
+                handleSignUp={handleSignUp}
+                closeModal={setModal}
+            />
         </div>
     );
 }
