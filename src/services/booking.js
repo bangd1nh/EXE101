@@ -1,7 +1,7 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
-const BOOKING_BASE_URL = "http://localhost:3000/api/booking";
+const BOOKING_BASE_URL = import.meta.env.VITE_API_URL_BOOKING;
 
 export const getPhotographerUserName = (photographerId) =>
     axios.get(BOOKING_BASE_URL + "/photographer/" + photographerId);

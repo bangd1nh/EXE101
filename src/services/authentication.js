@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const AUTHENTICATE_BASE_URL = "http://localhost:3000/api/authenticate";
+const AUTHENTICATE_BASE_URL = import.meta.env.VITE_API_URL_AUTHENTICATE;
 
 export const register = (newUser) =>
     axios.post(AUTHENTICATE_BASE_URL + "/register", newUser);
