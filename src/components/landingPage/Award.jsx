@@ -67,7 +67,7 @@ function Award() {
                                 <div className="flex flex-col items-center">
                                     <img
                                         src={
-                                            "/public/images/navbar/b977b6d2d4dc6b888346f9e282771095.jpg"
+                                            "/images/navbar/b977b6d2d4dc6b888346f9e282771095.jpg"
                                         }
                                         alt={winner.name}
                                         className="w-[480px] h-[480px] object-cover rounded-lg"
@@ -90,7 +90,7 @@ function Award() {
                                         <div className="w-20 h-20 mx-auto rounded-2xl overflow-hidden ">
                                             <img
                                                 src={
-                                                    "/public/images/navbar/avatar.jpg"
+                                                    "/images/navbar/avatar.jpg"
                                                 }
                                                 alt={winner.name}
                                                 className="w-full h-full object-cover clip-hexagon"

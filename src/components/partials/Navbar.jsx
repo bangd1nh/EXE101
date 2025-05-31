@@ -36,7 +36,7 @@ const Navbar = () => {
                 <Link to={"/"}>
                     <div className="flex items-center space-x-3">
                         <img
-                            src="/public/images/navbar/logo.png"
+                            src="/images/navbar/logo.png"
                             alt="Logo"
                             className="w-12 h-12 rounded-full border-2 border-gray-600"
                         />
@@ -158,7 +158,7 @@ const Navbar = () => {
                             className="focus:outline-none"
                         >
                             <img
-                                src="/public/images/navbar/avatar.jpg"
+                                src="/images/navbar/avatar.jpg"
                                 alt="User Avatar"
                                 className="w-12 h-12 rounded-full border-2 border-gray-600"
                             />
