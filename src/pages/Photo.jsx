@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import MiniNavBar from "../component/partials/MiniNavBar";
 import { major, photos } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
-import MiniNavBar from "../components/partials/MiniNavbar";
+import MiniNavBar from "../components/partials/MiniNavBar";
 
 const BookmarkFlags = ({ colors }) => (
     <div className="absolute top-0 right-6 flex gap-1">

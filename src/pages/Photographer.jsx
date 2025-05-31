@@ -17,7 +17,7 @@ import { major, photographers } from "../constants/data";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import PhotographerCard from "../components/photograper/PhotographerCard";
 import { getAllPhotographers } from "../services/photographers";
-import MiniNavBar from "../components/partials/MiniNavbar";
+import MiniNavBar from "../components/partials/MiniNavBar";
 
 function Photographer() {
     const [photographers1, setPhotographers1] = useState([]);
