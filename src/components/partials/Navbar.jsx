@@ -103,7 +103,7 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                                    <Link to="/waiting-list">Waiting List</Link>
+                                    <Link to="/finish-list">finish List</Link>
                                 </li>
                                 <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg"></li>
                             </ul>

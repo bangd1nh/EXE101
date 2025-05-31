@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getId, getUserId } from "../../services/user";
-import { getPendingBooking } from "../../services/booking";
+import {
+    acceptBookingRequest,
+    getPendingBooking,
+    rejectBookingRequest,
+} from "../../services/booking";
 
 const WaitingList = () => {
     const [loading, setLoading] = useState(true);
@@ -67,15 +71,28 @@ const WaitingList = () => {
 
     const handleRejectSubmit = () => {
         if (selectedCustomerId !== null) {
-            setRejectedCustomers([...rejectedCustomers, selectedCustomerId]);
-            setShowRejectModal(false);
-            setRejectReason("");
-            setSelectedCustomerId(null);
+            rejectBookingRequest(selectedCustomerId)
+                .then((res) => {
+                    setRejectedCustomers([
+                        ...rejectedCustomers,
+                        selectedCustomerId,
+                    ]);
+                    setRejectReason("");
+                    setSelectedCustomerId(null);
+                })
+                .catch((err) => console.log(err))
+                .finally(() => {
+                    setShowRejectModal(false);
+                });
         }
     };
 
     const handleAccept = (customerId) => {
-        setAcceptedCustomers([...acceptedCustomers, customerId]);
+        acceptBookingRequest(customerId)
+            .then((res) => {
+                setAcceptedCustomers([...acceptedCustomers, customerId]);
+            })
+            .catch((err) => console.log(err));
     };
 
     const getProgressStatus = (customerId) => {

@@ -18,3 +18,9 @@ export const bookPhotographer = (photographerId, data) =>
 
 export const getPendingBooking = (photographerId) =>
     axios.get(BOOKING_BASE_URL + "/book/" + photographerId);
+
+export const acceptBookingRequest = (bookingId) =>
+    axios.get(BOOKING_BASE_URL + "/book/accept/" + bookingId);
+
+export const rejectBookingRequest = (bookingId) =>
+    axios.get(BOOKING_BASE_URL + "/book/reject/" + bookingId);
