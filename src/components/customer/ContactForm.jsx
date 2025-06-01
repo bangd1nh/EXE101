@@ -7,6 +7,7 @@ import {
 } from "../../services/booking";
 import { getPhotographerServices } from "../../services/photographers";
 import { message } from "antd";
+import TransferInfoModal from "../../modal/TransferInfoModal";
 // import { useParams } from "react-router-dom";
 
 const ContactForm = () => {
@@ -23,6 +24,15 @@ const ContactForm = () => {
     service: "",
     time: "",
   });
+
+  const [open, setOpen] = useState(false);
+
+  const transferData = {
+    bankName: "Mbbank",
+    accountNumber: "838929082002",
+    accountHolder: "TRAN QUYET THANG",
+    amount: 500000,
+  };
 
   const [services, setServices] = useState([]);
 
@@ -69,7 +79,7 @@ const ContactForm = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     // naviagate("/payment");
-    alert("Thông tin đã được gửi!");
+    setOpen(true);
   };
 
   return (
@@ -238,6 +248,11 @@ const ContactForm = () => {
           </button>
         </div>
       </div>
+      <TransferInfoModal
+        open={open}
+        onClose={() => setOpen(false)}
+        transferData={transferData}
+      />
     </div>
   );
 };

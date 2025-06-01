@@ -3,43 +3,41 @@ import {
   Box,
   Button,
   FormControl,
-  InputLabel,
   MenuItem,
-  OutlinedInput,
-  Popover,
   Select,
   Slider,
   Typography,
+  Popover,
 } from "@mui/material";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@ant-design/icons";
 import PhotographerCard from "../components/photograper/PhotographerCard";
 import { getAllPhotographers } from "../services/photographers";
 import MiniNavBar from "../components/partials/MiniNavBar";
-import { major, photographers } from "../constants/data";
+import { major } from "../constants/data";
 
 function Photographer() {
-  const [photographers1, setPhotographers1] = useState([]);
+  const [photographers, setPhotographers] = useState([]);
   const [filteredPhotographers, setFilteredPhotographers] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [value, setValue] = useState([0, 18000000]);
-  const [selectedMajor, setSelectedMajor] = useState(major[0]);
-  const [selectedLanguages, setSelectedLanguages] = useState("Vietnamese");
-  const [category, setCategory] = useState("ALL"); // Default to show all
-  console.log(selectedMajor);
+  const [priceRange, setPriceRange] = useState([0, 18000000]);
+  const [selectedMajor, setSelectedMajor] = useState("");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [category, setCategory] = useState("ALL");
+
   useEffect(() => {
     getAllPhotographers()
       .then((res) => {
         if (res.data.message === "success" && Array.isArray(res.data.payload)) {
-          setPhotographers1(res.data.payload);
-          setFilteredPhotographers(res.data.payload); // Initialize filtered list
-          console.log("Photographers loaded:", res.data.payload);
+          setPhotographers(res.data.payload);
+          setFilteredPhotographers(res.data.payload);
         }
       })
-      .catch((err) => console.log("Error loading photographers:", err));
+      .catch((err) => console.error("Error loading photographers:", err));
   }, []);
 
   useEffect(() => {
-    let filtered = photographers1;
+    let filtered = photographers;
+
     if (selectedMajor) {
       filtered = filtered.filter((p) =>
         p.Description.toLowerCase().includes(selectedMajor.toLowerCase())
@@ -47,14 +45,14 @@ function Photographer() {
     }
 
     filtered = filtered.filter((p) => {
-      const price = parseInt(p.Price.replace(" VND", ""));
-      return price >= value[0] && price <= value[1];
+      const price = p.Price ? parseInt(p.Price.replace(" VND", "")) || 0 : 0;
+      return price >= priceRange[0] && price <= priceRange[1];
     });
 
-    if (selectedLanguages === "Vietnamese") {
-      filtered = filtered;
-    } else {
-      filtered = [];
+    if (selectedLanguage) {
+      filtered = filtered.filter((p) =>
+        p.Languages?.includes(selectedLanguage)
+      );
     }
 
     if (category === "TOP RATED") {
@@ -62,25 +60,14 @@ function Photographer() {
     }
 
     setFilteredPhotographers(filtered);
-  }, [selectedMajor, value, selectedLanguages, category, photographers1]);
+  }, [selectedMajor, priceRange, selectedLanguage, category, photographers]);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
+  const handleClose = () => setAnchorEl(null);
 
   const open = Boolean(anchorEl);
   const id = open ? "price-popover" : undefined;
   const categories = ["TOP RATED", "NEW"];
-
-  const handleCallBack = (data) => {
-    setCategory(data === "NEW" ? "ALL" : data);
-    console.log(data);
-  };
-
   const languages = [
     "English",
     "Vietnamese",
@@ -91,160 +78,140 @@ function Photographer() {
     "Korean",
   ];
 
-  const [ps, setPs] = useState(photographers);
+  const handleCallBack = (data) => {
+    setCategory(data === "NEW" ? "ALL" : data);
+  };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <MiniNavBar categories={categories} callback={handleCallBack} />
-      <div>
-        <p className="text-center font-light text-3xl mt-5">
+      <div className="text-center mt-4 sm:mt-6">
+        <p className="text-2xl sm:text-3xl font-light">
           World's Best Wedding Photographers
         </p>
-        {/* <div className="flex gap-5 justify-center mt-5">
-                    {countries.map((c, index) => {
-                        return (
-                            <p
-                                key={index}
-                                className="text-blue-500 hover:cursor-pointer hover:text-blue-700 transition ease duration-300"
-                            >
-                                {c}
-                            </p>
-                        );
-                    })}
-                </div> */}
-        {/* <div className="text-center mt-5">
-                    <button className="bg-gray-400/25 rounded-[10%] px-5 py-1 text-blue-400 hover:bg-gray-400/75 duration-300 hover:cursor-pointer transition ease">
-                        Choose Location
-                    </button>
-                </div> */}
-        <div className="flex mt-5 justify-center">
-          <FormControl
-            sx={{
-              width: "384px",
-              border: "1px solid gray",
-              backgroundColor: "white",
-              "&:hover": {
-                border: "1px solid black",
-              },
-              transition: "ease 0.3s",
-            }}>
-            <div className="flex flex-col p-[10px] ">
-              <Typography fontWeight="bold">
-                Photographer's specialty
-              </Typography>
-              <Select
-                value={selectedMajor}
-                onChange={(e) => setSelectedMajor(e.target.value)}
-                disableUnderline
-                variant="standard"
-                sx={{
-                  minWidth: "100px",
-                  fontSize: "14px",
-                  fontWeight: "normal",
-                }}>
-                {major.map((m) => (
-                  <MenuItem value={m} key={m}>
-                    {m}
-                  </MenuItem>
-                ))}
-              </Select>
-            </div>
-          </FormControl>
-          <Box
-            aria-describedby={id}
-            className="border-b border-t px-4 py-2 cursor-pointer hover:border-black w-96 border-gray-500 transition ease duration-300"
-            onClick={handleClick}>
-            <Typography variant="subtitle2" fontWeight="bold">
-              Charge per hour
-            </Typography>
-            <Typography>
-              {value[0].toLocaleString()} - {value[1].toLocaleString()} VND
-            </Typography>
-          </Box>
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}>
-            <Box className="p-4 w-96 mt-5">
-              <Slider
-                value={value}
-                onChange={(e, newValue) => setValue(newValue)}
-                min={0}
-                max={18000000}
-                step={500000}
-                valueLabelDisplay="auto"
-              />
-              <Box display="flex" justifyContent="space-between">
-                <Typography>0</Typography>
-                <Typography>3,000,000</Typography>
-                <Typography>18,000,000</Typography>
-              </Box>
-              <Button
-                variant="contained"
-                fullWidth
-                color="primary"
-                onClick={handleClose}
-                className="mt-2">
-                Apply
-              </Button>
-            </Box>
-          </Popover>
-          <FormControl
-            sx={{
-              width: "384px",
-              border: "1px solid gray",
-              backgroundColor: "white",
-              "&:hover": {
-                border: "1px solid black",
-              },
-              transition: "ease 0.3s",
-            }}>
-            <div className="flex flex-col p-[10px] ">
-              <Typography fontWeight="bold">Photographer's language</Typography>
-              <Select
-                value={selectedLanguages}
-                onChange={(e) => setSelectedLanguages(e.target.value)}
-                disableUnderline
-                variant="standard"
-                sx={{
-                  minWidth: "100px",
-                  fontSize: "14px",
-                  fontWeight: "normal",
-                }}>
-                {languages.map((m) => (
-                  <MenuItem value={m} key={m}>
-                    {m}
-                  </MenuItem>
-                ))}
-              </Select>
-            </div>
-          </FormControl>
-        </div>
       </div>
-      <div className="w-7xl mx-auto">
+      <div className="flex flex-col sm:flex-row sm:items-stretch justify-center gap-3 sm:gap-4 mt-4 sm:mt-6 px-4 sm:px-6 lg:px-8">
+        <FormControl
+          sx={{
+            width: { xs: "100%", sm: "300px" },
+            border: "1px solid gray",
+            backgroundColor: "white",
+            "&:hover": { border: "1px solid black" },
+            transition: "ease 0.3s",
+          }}>
+          <div className="flex flex-col p-2 sm:p-3">
+            <Typography fontWeight="bold" fontSize={{ xs: 14, sm: 16 }}>
+              Specialty
+            </Typography>
+            <Select
+              value={selectedMajor}
+              onChange={(e) => setSelectedMajor(e.target.value)}
+              disableUnderline
+              variant="standard"
+              sx={{ fontSize: { xs: 12, sm: 14 } }}>
+              <MenuItem value="">All Specialties</MenuItem>
+              {major.map((m) => (
+                <MenuItem value={m} key={m}>
+                  {m}
+                </MenuItem>
+              ))}
+            </Select>
+          </div>
+        </FormControl>
+        <Box
+          aria-describedby={id}
+          className="border px-3 py-2 sm:px-4 sm:py-2.5 cursor-pointer hover:border-black w-full sm:w-80 border-gray-500 transition duration-300"
+          onClick={handleClick}>
+          <Typography
+            variant="subtitle2"
+            fontWeight="bold"
+            fontSize={{ xs: 14, sm: 16 }}>
+            Charge per Hour
+          </Typography>
+          <Typography fontSize={{ xs: 12, sm: 14 }}>
+            {priceRange[0].toLocaleString()} - {priceRange[1].toLocaleString()}{" "}
+            VND
+          </Typography>
+        </Box>
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "bottom", horizontal: "left" }}>
+          <Box className="p-4 w-80 sm:w-96 mt-2 sm:mt-4">
+            <Slider
+              value={priceRange}
+              onChange={(e, newValue) => setPriceRange(newValue)}
+              min={0}
+              max={18000000}
+              step={500000}
+              valueLabelDisplay="auto"
+            />
+            <Box display="flex" justifyContent="space-between">
+              <Typography fontSize={{ xs: 12, sm: 14 }}>0</Typography>
+              <Typography fontSize={{ xs: 12, sm: 14 }}>3,000,000</Typography>
+              <Typography fontSize={{ xs: 12, sm: 14 }}>18,000,000</Typography>
+            </Box>
+            <Button
+              variant="contained"
+              fullWidth
+              color="primary"
+              onClick={handleClose}
+              sx={{ mt: 2 }}>
+              Apply
+            </Button>
+          </Box>
+        </Popover>
+        <FormControl
+          sx={{
+            width: { xs: "100%", sm: "300px" },
+            border: "1px solid gray",
+            backgroundColor: "white",
+            "&:hover": { border: "1px solid black" },
+            transition: "ease 0.3s",
+          }}>
+          <div className="flex flex-col p-2 sm:p-3">
+            <Typography fontWeight="bold" fontSize={{ xs: 14, sm: 16 }}>
+              Language
+            </Typography>
+            <Select
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              disableUnderline
+              variant="standard"
+              sx={{ fontSize: { xs: 12, sm: 14 } }}>
+              <MenuItem value="">All Languages</MenuItem>
+              {languages.map((m) => (
+                <MenuItem value={m} key={m}>
+                  {m}
+                </MenuItem>
+              ))}
+            </Select>
+          </div>
+        </FormControl>
+      </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12">
         {filteredPhotographers.length > 0 ? (
-          filteredPhotographers.map((p, index) => (
-            <div className="mt-5" key={index}>
-              <PhotographerCard photographer={p} />
-            </div>
-          ))
+          <div className="grid !grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {filteredPhotographers.map((p, index) => (
+              <div key={index}>
+                <PhotographerCard photographer={p} />
+              </div>
+            ))}
+          </div>
         ) : (
-          <p className="text-center text-gray-600 mt-5">
+          <p className="text-center text-gray-600 mt-6 text-sm sm:text-base">
             No photographers match the selected filters.
           </p>
         )}
       </div>
-      <div className="text-center mt-10">
-        <button className="border rounded border-gray-300 hover:border-black duration-300 font-semibold px-5 py-2">
-          Show more
+      <div className="text-center mt-8 sm:mt-12 mb-12 sm:mb-16">
+        <button className="border rounded border-gray-300 hover:border-black transition duration-300 font-semibold px-4 sm:px-5 py-2 text-sm sm:text-base">
+          Show More
         </button>
-        <div className="flex justify-center gap-4 mt-5 mb-20">
-          <button className="hover:cursor-pointer">
+        <div className="flex justify-center items-center gap-2 sm:gap-4 mt-4 sm:mt-6">
+          <button className="text-base sm:text-lg p-1 sm:p-2 hover:text-gray-600 transition">
             <ArrowLeftOutlined />
           </button>
           {Array(5)
@@ -252,14 +219,13 @@ function Photographer() {
             .map((_, index) => (
               <button
                 key={index}
-                className={
-                  `hover:cursor-pointer border px-2 rounded hover:border-black duration-300 ` +
-                  (index === 0 ? "border-black" : "border-gray-300")
-                }>
-                {index}
+                className={`text-sm sm:text-base px-2 sm:px-3 py-1 rounded border hover:border-black transition duration-300 ${
+                  index === 0 ? "border-black" : "border-gray-300"
+                }`}>
+                {index + 1}
               </button>
             ))}
-          <button className="hover:cursor-pointer">
+          <button className="text-base sm:text-lg p-1 sm:p-2 hover:text-gray-600 transition">
             <ArrowRightOutlined />
           </button>
         </div>
