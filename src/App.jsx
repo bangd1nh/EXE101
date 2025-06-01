@@ -29,6 +29,7 @@ import About from "./pages/About";
 import UserProfile from "./pages/UserProfile";
 import Notfound from "./pages/Notfound";
 import BookingCustomer from "./pages/BookingCustomer";
+import VerifyEmail from "./pages/VerifyEmail";
 
 function App() {
     // const location = useLocation();
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/user" element={<UserProfile />} />
                 <Route path="/customerBook" element={<BookingCustomer />} />
+                <Route path="/verify/:token" element={<VerifyEmail />} />
                 <Route path="/*" element={<Notfound />} />
             </Routes>
             <div className="fixed right-0 top-52 z-50 p-3 flex-col flex gap-10 rounded-l-3xl border-gray-500 bg-white">
