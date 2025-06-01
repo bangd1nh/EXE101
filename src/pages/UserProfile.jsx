@@ -7,7 +7,11 @@ import {
   getUserRole,
 } from "../services/user";
 import { PhoneOutlined } from "@ant-design/icons";
-import { getPhotograp, updateInforPhotograp } from "../services/photographers";
+import {
+  getPhotograp,
+  updateInforPhotograp,
+  uploadAvatarPhoto,
+} from "../services/photographers";
 import { useNavigate, useParams } from "react-router";
 import { Button } from "@mui/material";
 
@@ -15,6 +19,7 @@ function UserProfile() {
   const [isEditing, setIsEditing] = useState(false);
   const [editedUser, setEditedUser] = useState({});
   const [processing, setProcessing] = useState(false);
+  const [processingPhoto, setProcessingPhoto] = useState(false);
   const navigate = useNavigate();
   const [user, setUser] = useState({
     userId: "",
@@ -52,6 +57,7 @@ function UserProfile() {
           Rating: photgrapData.Rating || 0,
           Price: photgrapData.Price || "",
           Photos: photgrapData.PhotoGraphs?.imgUrl || [],
+          avatarPhoto: photgrapData.PhotographerId?.Avatar || "",
         };
         setUser((prev) => ({ ...prev, ...photographerDetails }));
         setEditedUser((prev) => ({
@@ -67,9 +73,7 @@ function UserProfile() {
       console.log("Error fetching photographer data:", error);
     }
   };
-
-  useEffect(() => {
-    // Fetch user profile
+  const featchDataUser = async () => {
     getUserProfile(userId)
       .then((res) => {
         const userData = res.data.payload;
@@ -88,7 +92,10 @@ function UserProfile() {
         console.log(res);
       })
       .catch((err) => console.log(err));
-
+  };
+  useEffect(() => {
+    // Fetch user profile
+    featchDataUser();
     // Fetch photographer data
     fetchPhotographerData();
   }, [userId]);
@@ -171,7 +178,7 @@ function UserProfile() {
       if (response.status === 200) {
         alert("Avatar uploaded successfully!");
         console.log(response);
-        setUser({ ...user, Avatar: response.data.payload.url });
+        featchDataUser();
       } else {
         alert("Failed to upload avatar.");
       }
@@ -180,6 +187,32 @@ function UserProfile() {
       console.log(error);
     } finally {
       setProcessing(false);
+    }
+  };
+  const handleFileChangePhoto = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      setProcessingPhoto(true);
+      const response = await uploadAvatarPhoto(userId, formData);
+
+      if (response.status === 200) {
+        alert("Avatar uploaded successfully!");
+        console.log(response);
+        fetchPhotographerData();
+        setUser({ ...user, Avatar: response.data.payload.url });
+      } else {
+        alert("Failed to upload avatar.");
+      }
+    } catch (error) {
+      alert("Error uploading avatar: " + error.message);
+      console.log(error);
+    } finally {
+      setProcessingPhoto(false);
     }
   };
 
@@ -465,22 +498,50 @@ function UserProfile() {
                   <p className="mt-1 text-gray-900 p-2">{user.Price}</p>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-600">
-                    Photos
-                  </label>
-                  <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {user.Photos.length > 0 ? (
-                      user.Photos.map((photo, index) => (
-                        <img
-                          key={index}
-                          src={photo}
-                          alt={`Photo ${index + 1}`}
-                          className="w-full h-32 sm:h-40 object-cover rounded-md"
+                  <div className="relative group">
+                    <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                      {user.Photos.length > 0 ? (
+                        user.Photos.map((photo, index) => (
+                          <img
+                            key={index}
+                            src={photo}
+                            alt={`Photo ${index + 1}`}
+                            className="w-full h-32 sm:h-40 object-cover rounded-md"
+                          />
+                        ))
+                      ) : (
+                        <p className="text-gray-600">No photos available.</p>
+                      )}
+                    </div>
+
+                    <label className="absolute bottom-0 right-0 bg-blue-500 hover:bg-blue-600 text-white rounded-full p-2 cursor-pointer shadow-lg">
+                      <input
+                        type="file"
+                        className="hidden"
+                        accept="image/*"
+                        disabled={processingPhoto}
+                        onChange={(e) => handleFileChangePhoto(e)}
+                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                         />
-                      ))
-                    ) : (
-                      <p className="text-gray-600">No photos available.</p>
-                    )}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                    </label>
                   </div>
                 </div>
               </div>

@@ -22,3 +22,13 @@ export const getPhotograp = async (photographerId) => {
 };
 export const updateInforPhotograp = (userId, updateUser) =>
   axios.put(PHOTOGRAPHERS_BASE_API_URL + "/user/" + userId, updateUser);
+export const uploadAvatarPhoto = (userId, formData) =>
+  axios.post(
+    PHOTOGRAPHERS_BASE_API_URL + "/user/uploadImage/" + userId,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
