@@ -6,7 +6,7 @@ import { verify } from "../services/authentication";
 function VerifyEmail() {
     const { token } = useParams();
     const [success, setSuccess] = useState(false);
-    const [fail, setFail] = useState(true);
+    const [fail, setFail] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
