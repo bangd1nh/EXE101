@@ -1,14 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import ButtonWishList from "./ButtonWishList";
 import { Link, useNavigate } from "react-router-dom";
-import "./style.css";
-import { getUserId, getUserRole } from "../../services/user";
+import { getUserRole } from "../../services/user";
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
+
   // Toggle Dropdown
   const toggleDropdown = (menu) => {
     setOpenDropdown(openDropdown === menu ? null : menu);
@@ -33,18 +33,25 @@ const Navbar = () => {
     };
   }, []);
 
+  // Handle sub-menu item click
+  const handleSubMenuClick = (e) => {
+    e.stopPropagation(); // Prevent click from bubbling to parent
+    setOpenDropdown(null); // Close dropdown
+    setIsMobileMenuOpen(false); // Close mobile menu
+  };
+
   return (
-    <nav className="bg-white shadow-lg p-4 sticky top-0 z-40">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-white shadow-lg px-4 py-3 sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* Logo */}
-        <Link to={"/"}>
-          <div className="flex items-center space-x-3">
+        <Link to="/">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             <img
               src="/images/navbar/logo.png"
               alt="Logo"
-              className="w-12 h-12 rounded-full border-2 border-gray-600"
+              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-gray-600"
             />
-            <span className="text-2xl font-bold tracking-wide text-[#f27457]">
+            <span className="text-xl sm:text-2xl font-bold tracking-wide text-[#f27457]">
               FrameMate
             </span>
           </div>
@@ -76,26 +83,32 @@ const Navbar = () => {
         </div>
 
         {/* Menu for Desktop */}
-        <ul className="hidden md:flex space-x-8 text-lg font-medium">
+        <ul className="hidden md:flex space-x-6 text-base font-medium">
           {/* Photographers Dropdown */}
           <li className="relative group">
             <button
               onClick={() => toggleDropdown("photographers")}
-              className="hover:text-gray-300 transition duration-300">
-              Các nhiếp ảnh gia
+              className="text-gray-700 hover:text-[#f27457] transition duration-300">
+              Photographers
             </button>
             {openDropdown === "photographers" && (
               <ul
                 ref={dropdownRef}
-                className="absolute left-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                className="absolute left-0 bg-white bg-opacity-95 shadow-lg mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <li
+                  className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                  onClick={handleSubMenuClick}>
                   <Link to="/photographer">Top</Link>
                 </li>
-                <li className="hover:bg-gray-200 px-4 py-3">
-                  <a href="#">Newcomers</a>
+                <li
+                  className="hover:bg-gray-100 px-4 py-2"
+                  onClick={handleSubMenuClick}>
+                  <Link to="/photographers/newcomers">Newcomers</Link>
                 </li>
-                <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-                  <a href="#">Best Awards</a>
+                <li
+                  className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                  onClick={handleSubMenuClick}>
+                  <Link to="/photographers/awards">Best Awards</Link>
                 </li>
               </ul>
             )}
@@ -106,23 +119,28 @@ const Navbar = () => {
             <li className="relative group">
               <button
                 onClick={() => toggleDropdown("customer")}
-                className="hover:text-gray-300 transition duration-300">
-                Khách Hàng
+                className="text-gray-700 hover:text-[#f27457] transition duration-300">
+                Customers
               </button>
               {openDropdown === "customer" && (
                 <ul
                   ref={dropdownRef}
-                  className="absolute left-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                  className="absolute left-0 bg-white bg-opacity-95 shadow-lg mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <li
+                    className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                    onClick={handleSubMenuClick}>
                     <Link to="/waiting-list">Waiting List</Link>
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-3">
+                  <li
+                    className="hover:bg-gray-100 px-4 py-2"
+                    onClick={handleSubMenuClick}>
                     <Link to="/accepted-list">Accepted List</Link>
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-3">
+                  <li
+                    className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                    onClick={handleSubMenuClick}>
                     <Link to="/finish-list">Finish List</Link>
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg"></li>
                 </ul>
               )}
             </li>
@@ -131,35 +149,37 @@ const Navbar = () => {
           <li>
             <Link
               to="/photos"
-              className="hover:text-gray-300 transition duration-300">
-              Thư viện Ảnh
+              className="text-gray-700 hover:text-[#f27457] transition duration-300">
+              Photo Gallery
             </Link>
           </li>
           {getUserRole() === "CUSTOMER" && (
             <li>
-              <a
-                href="/customerBook"
-                className="hover:text-gray-300 transition duration-300">
-                Đặt lịch
-              </a>
+              <Link
+                to="/customerBook"
+                className="text-gray-700 hover:text-[#f27457] transition duration-300">
+                Book Now
+              </Link>
             </li>
           )}
           <li>
-            <a href="#" className="hover:text-gray-300 transition duration-300">
-              Sự kiện
-            </a>
+            <Link
+              to="/events"
+              className="text-gray-700 hover:text-[#f27457] transition duration-300">
+              Events
+            </Link>
           </li>
           <li>
-            <a
-              href="/about"
-              className="hover:text-gray-300 transition duration-300">
-              Về Framemate
-            </a>
+            <Link
+              to="/about"
+              className="text-gray-700 hover:text-[#f27457] transition duration-300">
+              About FrameMate
+            </Link>
           </li>
         </ul>
 
         {/* User and Wishlist for Desktop */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-4">
           <div className="relative group">
             <button
               onClick={() => toggleDropdown("user")}
@@ -167,39 +187,40 @@ const Navbar = () => {
               <img
                 src="/images/navbar/avatar.jpg"
                 alt="User Avatar"
-                className="w-12 h-12 rounded-full border-2 border-gray-600"
+                className="w-10 h-10 rounded-full border-2 border-gray-600"
               />
             </button>
             {openDropdown === "user" && (
               <ul
                 ref={dropdownRef}
-                className="absolute right-0 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                className="absolute right-0 bg-white bg-opacity-95 shadow-lg mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {localStorage.getItem("token") ? (
                   <>
-                    <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                      <a href="/user">Profile</a>
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                      onClick={handleSubMenuClick}>
+                      <Link to="/user">Profile</Link>
                     </li>
-                    <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-                      <Link
-                        to="/login"
-                        onClick={() => localStorage.removeItem("token")}>
-                        Logout
-                      </Link>
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        navigate("/login");
+                      }}>
+                      Logout
                     </li>
                   </>
                 ) : (
                   <>
-                    <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                      <a href="#">Profile</a>
-                    </li>
-                    <li className="hover:bg-gray-200 px-4 py-3">
-                      <a href="#">Balance</a>
-                    </li>
-                    <li className="hover:bg-gray-200 px-4 py-3">
-                      <a href="#">Settings</a>
-                    </li>
-                    <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                      onClick={handleSubMenuClick}>
                       <Link to="/login">Login</Link>
+                    </li>
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                      onClick={handleSubMenuClick}>
+                      <Link to="/signup">Sign Up</Link>
                     </li>
                   </>
                 )}
@@ -212,27 +233,34 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-white bg-opacity-90 backdrop-blur-lg shadow-xl mt-4 rounded-lg">
-          <ul className="flex flex-col space-y-4 p-4 text-lg font-medium">
+        <div className="md:hidden bg-white bg-opacity-95 shadow-lg mt-4 rounded-lg px-4 py-3">
+          <ul className="flex flex-col space-y-3 text-base font-medium">
             {/* Photographers Dropdown */}
             <li className="relative">
               <button
-                onClick={() => toggleDropdown("photographers")}
-                className="w-full text-left hover:text-gray-300 transition duration-300">
-                Các nhiếp ảnh gia
+                onClick={() => {
+                  toggleDropdown("photographers");
+                  navigate("/photographer");
+                }}
+                className="w-full text-left text-gray-700 hover:text-[#f27457] transition duration-300">
+                Photographers
               </button>
               {openDropdown === "photographers" && (
-                <ul className="mt-2 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl rounded-lg w-full">
+                <ul className="mt-2 bg-white bg-opacity-95 shadow-lg rounded-lg w-full">
                   <li
-                    onClick={() => naviagate("/photographer")}
-                    className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                    className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                    onClick={handleSubMenuClick}>
                     <Link to="/photographer">Top</Link>
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-3">
-                    <a href="#">Newcomers</a>
+                  <li
+                    className="hover:bg-gray-100 px-4 py-2"
+                    onClick={handleSubMenuClick}>
+                    <Link to="/photographers/newcomers">Newcomers</Link>
                   </li>
-                  <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-                    <a href="#">Best Awards</a>
+                  <li
+                    className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                    onClick={handleSubMenuClick}>
+                    <Link to="/photographers/awards">Best Awards</Link>
                   </li>
                 </ul>
               )}
@@ -242,19 +270,28 @@ const Navbar = () => {
             {getUserRole() === "PHOTOGRAPHER" && (
               <li className="relative">
                 <button
-                  onClick={() => toggleDropdown("customer")}
-                  className="w-full text-left hover:text-gray-300 transition duration-300">
-                  Khách Hàng
+                  onClick={() => {
+                    toggleDropdown("customer");
+                    navigate("/waiting-list");
+                  }}
+                  className="w-full text-left text-gray-700 hover:text-[#f27457] transition duration-300">
+                  Customers
                 </button>
                 {openDropdown === "customer" && (
-                  <ul className="mt-2 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl rounded-lg w-full">
-                    <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
+                  <ul className="mt-2 bg-white bg-opacity-95 shadow-lg rounded-lg w-full">
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                      onClick={handleSubMenuClick}>
                       <Link to="/waiting-list">Waiting List</Link>
                     </li>
-                    <li className="hover:bg-gray-200 px-4 py-3">
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2"
+                      onClick={handleSubMenuClick}>
                       <Link to="/accepted-list">Accepted List</Link>
                     </li>
-                    <li className="hover:bg-gray-200 px-4 py-3">
+                    <li
+                      className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                      onClick={handleSubMenuClick}>
                       <Link to="/finish-list">Finish List</Link>
                     </li>
                   </ul>
@@ -265,69 +302,74 @@ const Navbar = () => {
             <li>
               <Link
                 to="/photos"
-                className="hover:text-gray-300 transition duration-300">
-                Thư viện Ảnh
+                className="text-gray-700 hover:text-[#f27457] transition duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}>
+                Photo Gallery
               </Link>
             </li>
             {getUserRole() === "CUSTOMER" && (
               <li>
-                <a
-                  href="/customerBook"
-                  className="hover:text-gray-300 transition duration-300">
-                  Đặt lịch
-                </a>
+                <Link
+                  to="/customerBook"
+                  className="text-gray-700 hover:text-[#f27457] transition duration-300"
+                  onClick={() => setIsMobileMenuOpen(false)}>
+                  Book Now
+                </Link>
               </li>
             )}
             <li>
-              <a
-                href="#"
-                className="hover:text-gray-300 transition duration-300">
-                Sự kiện
-              </a>
+              <Link
+                to="/events"
+                className="text-gray-700 hover:text-[#f27457] transition duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}>
+                Events
+              </Link>
             </li>
             <li>
-              <a
-                href="/about"
-                className="hover:text-gray-300 transition duration-300">
-                Về Framemate
-              </a>
+              <Link
+                to="/about"
+                className="text-gray-700 hover:text-[#f27457] transition duration-300"
+                onClick={() => setIsMobileMenuOpen(false)}>
+                About FrameMate
+              </Link>
             </li>
 
             {/* User Dropdown */}
             <li className="relative">
               <button
                 onClick={() => toggleDropdown("user")}
-                className="w-full text-left hover:text-gray-300 transition duration-300">
-                Tài khoản
+                className="w-full text-left text-gray-700 hover:text-[#f27457] transition duration-300">
+                Account
               </button>
               {openDropdown === "user" && (
-                <ul className="mt-2 bg-white bg-opacity-90 backdrop-blur-lg shadow-xl rounded-lg w-full">
+                <ul className="mt-2 bg-white bg-opacity-95 shadow-lg rounded-lg w-full">
                   {localStorage.getItem("token") ? (
                     <>
-                      <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                        <a href="/user">Profile</a>
+                      <li
+                        className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                        onClick={handleSubMenuClick}>
+                        <Link to="/user">Profile</Link>
                       </li>
-                      <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
-                        <Link
-                          to="/login"
-                          onClick={() => localStorage.removeItem("token")}>
-                          Logout
-                        </Link>
+                      <li
+                        className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                        onClick={() => {
+                          localStorage.removeItem("token");
+                          navigate("/login");
+                        }}>
+                        Logout
                       </li>
                     </>
                   ) : (
                     <>
-                      <li className="hover:bg-gray-200 px-4 py-3 rounded-t-lg">
-                        <a href="#">Profile</a>
-                      </li>
-                      <li className="hover:bg-gray-200 px-4 py-3">
-                        <a href="#">Balance</a>
-                      </li>
-                      <li className="hover:bg-gray-200 px-4 py-3">
-                        <a href="#">Settings</a>
-                      </li>
-                      <li className="hover:bg-gray-200 px-4 py-3 rounded-b-lg">
+                      <li
+                        className="hover:bg-gray-100 px-4 py-2 rounded-t-lg"
+                        onClick={handleSubMenuClick}>
                         <Link to="/login">Login</Link>
+                      </li>
+                      <li
+                        className="hover:bg-gray-100 px-4 py-2 rounded-b-lg"
+                        onClick={handleSubMenuClick}>
+                        <Link to="/signup">Sign Up</Link>
                       </li>
                     </>
                   )}
