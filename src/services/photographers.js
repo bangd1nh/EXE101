@@ -1,11 +1,24 @@
 import axios from "axios";
 
 const PHOTOGRAPHERS_BASE_API_URL = import.meta.env.VITE_API_URL_PHOTOGRAPHER;
+console.log(PHOTOGRAPHERS_BASE_API_URL);
 
 export const getAllPhotographers = () => axios.get(PHOTOGRAPHERS_BASE_API_URL);
 
 export const getPhotographersById = (pId) =>
-    axios.get(PHOTOGRAPHERS_BASE_API_URL + "/" + pId);
+  axios.get(PHOTOGRAPHERS_BASE_API_URL + "/" + pId);
 
 export const getPhotographerServices = (photographerId) =>
-    axios.get(PHOTOGRAPHERS_BASE_API_URL + "/services/" + photographerId);
+  axios.get(PHOTOGRAPHERS_BASE_API_URL + "/services/" + photographerId);
+
+export const getPhotograp = async (photographerId) => {
+  console.log(PHOTOGRAPHERS_BASE_API_URL);
+  try {
+    const res = await axios.get(
+      PHOTOGRAPHERS_BASE_API_URL + "/user/" + photographerId
+    );
+    return res;
+  } catch (err) {}
+};
+export const updateInforPhotograp = (userId, updateUser) =>
+  axios.put(PHOTOGRAPHERS_BASE_API_URL + "/user/" + userId, updateUser);
