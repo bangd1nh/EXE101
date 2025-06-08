@@ -24,6 +24,7 @@ const ContactForm = () => {
         service: "",
         time: "",
     });
+    console.log({formData});
     const [processing, setProcessing] = useState(false);
 
     const [open, setOpen] = useState(false);
@@ -68,7 +69,7 @@ const ContactForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setProcessing(true);
-        console.log(formData);
+        console.log({formData});
         const data = {
             email: formData.email,
             service: formData.service,
@@ -79,7 +80,7 @@ const ContactForm = () => {
         };
         bookPhotographer(photographerId, data)
             .then((res) => {
-                console.log(res);
+                console.log({res});
                 setOpen(true);
             })
             .catch((err) => console.log(err))
@@ -189,7 +190,7 @@ const ContactForm = () => {
                             <div className="p-3 border border-gray-300 rounded-lg bg-gray-50">
                                 {services
                                     .find((s) => s._id === formData.service)
-                                    ?.Price?.toLocaleString("vi-VN") || 0}{" "}
+                                    ?.Price?.toLocaleString("vi-VN") || 0}
                                 VNĐ
                             </div>
                         </div>
