@@ -28,11 +28,11 @@ const BookingCustomer = () => {
     }
   };
 
-  const handleDoneClick = async (bookingId) => {
+  const handleDoneClick = async (bookingId, photographerId) => {
     setSelectedBookingId(bookingId);
     setLoadingAccept(true);
     try {
-      const res = await finalAcceptBooking(bookingId, getId());
+      const res = await finalAcceptBooking(bookingId, photographerId);
       const driveLink = res.data.data.DriveLink;
       setDriveLinkMap((prev) => ({ ...prev, [bookingId]: driveLink }));
       await fetchBookings();
@@ -100,7 +100,7 @@ const BookingCustomer = () => {
 
               {booking.Status === "WAITING_DEMO" && (
                 <div className="mt-4">
-                  <button onClick={() => handleDoneClick(booking._id)} className="bg-green-600 text-white px-4 py-2 rounded" disabled={loadingAccept}>
+                  <button onClick={() => handleDoneClick(booking._id, booking.PhotographerId.PhotographerId._id)} className="bg-green-600 text-white px-4 py-2 rounded" disabled={loadingAccept}>
                     {loadingAccept ? <Loading size="sm" /> : "Done"}
                   </button>
                 </div>
