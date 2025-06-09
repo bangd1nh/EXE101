@@ -38,9 +38,9 @@ export const uploadDemoRequest = (bookingId, formData) =>
          "Content-Type": "multipart/form-data",
        },
     });
-export const finalAcceptBooking = (bookingId, customerId) =>
+export const finalAcceptBooking = (bookingId, photographerId) =>
   axios.patch(`${BOOKING_BASE_URLS}${bookingId}/final-accept`, {
-    customerId,
+    photographerId,
   });
 
 
