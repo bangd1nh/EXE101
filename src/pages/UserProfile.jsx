@@ -77,6 +77,7 @@ function UserProfile() {
     getUserProfile(userId)
       .then((res) => {
         const userData = res.data.payload;
+        console.log({userData});
         setUser((prev) => ({
           ...prev,
           ...userData,
@@ -191,10 +192,12 @@ function UserProfile() {
   };
   const handleFileChangePhoto = async (e) => {
     const file = e.target.files[0];
+    console.log({file})
     if (!file) return;
 
     const formData = new FormData();
     formData.append("file", file);
+    console.log({formData})
 
     try {
       setProcessingPhoto(true);

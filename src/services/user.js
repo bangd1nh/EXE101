@@ -2,6 +2,8 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 
 const USER_BASE_URL = import.meta.env.VITE_API_URL_USER;
+const WALLET_BASE_URL = import.meta.env.VITE_API_URL_WALLET;
+
 
 export const getUserProfile = (userId) =>
     axios.get(USER_BASE_URL + "/" + userId);
@@ -36,3 +38,7 @@ export const getUserRole = () => {
     const decodedToken = jwtDecode(token);
     return decodedToken.role;
 };
+
+export const getWallet = (userId) =>
+    axios.get(WALLET_BASE_URL  + userId);
+

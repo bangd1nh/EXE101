@@ -18,6 +18,9 @@ import Register from "./pages/Register";
 import ContactForm from "./components/customer/ContactForm";
 import WishlistView from "./components/customer/WishlistView";
 import PhotographerProfile from "./pages/PhotographerProfile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Footer from "./components/partials/Footer";
 import {
     FacebookOutlined,
@@ -30,6 +33,8 @@ import UserProfile from "./pages/UserProfile";
 import Notfound from "./pages/Notfound";
 import BookingCustomer from "./pages/BookingCustomer";
 import VerifyEmail from "./pages/VerifyEmail";
+import { Wallet } from "lucide-react";
+import WalletOverview from "./components/photograper/WalletOverview";
 
 function App() {
     // const location = useLocation();
@@ -62,6 +67,7 @@ function App() {
                 <Route path="/chat" element={<ChatingPage />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/user" element={<UserProfile />} />
+                <Route path="/wallet" element={<WalletOverview />} />
                 <Route path="/customerBook" element={<BookingCustomer />} />
                 <Route path="/verify/:token" element={<VerifyEmail />} />
                 <Route path="/*" element={<Notfound />} />
@@ -72,6 +78,7 @@ function App() {
                 <TwitterOutlined className="text-3xl hover:scale-150 duration-300 hover:cursor-pointer" />
             </div>
             <Footer />
+            <ToastContainer position="top-right" autoClose={3000} />
         </>
     );
 }

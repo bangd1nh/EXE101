@@ -56,110 +56,123 @@ const FinishList = () => {
         setExpandedCustomer(expandedCustomer === id ? null : id);
     };
 
-    return (
-        <div className="min-h-screen flex flex-col items-center bg-gray-100">
-            <header className="w-full  bg-[#e5b378] py-4 flex justify-between px-10 items-center shadow-md">
-                <h1 className="text-xl font-bold tracking-wide text-gray-800">
-                    {" "}
-                    Finish List
-                </h1>
-                <button className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition">
-                    Message
-                </button>
-            </header>
+return (
+  <section className="py-10 bg-gray-100 min-h-screen">
+    <div className="max-w-7xl mx-auto px-4">
+      <h2 className="text-3xl font-semibold text-[#e5b378] mb-6">Finish List</h2>
 
-            <div className="w-full max-w-6xl bg-white mt-10 p-8 rounded-lg shadow-lg">
-                <div className="space-y-6">
-                    {finishedCustomers.map((customer) => (
-                        <div
-                            key={customer.id}
-                            className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition relative cursor-pointer"
-                            onClick={() => toggleExpand(customer.id)}
-                        >
-                            {/* Dòng chính chứa thông tin và 4 ảnh */}
-                            <div className="flex items-center space-x-4">
-                                {/* Avatar + Thông tin chính */}
-                                <div className="flex items-center space-x-4 w-1/4">
-                                    <img
-                                        src={customer.avatar}
-                                        alt={customer.name}
-                                        className="w-16 h-16 rounded-full border border-gray-300 shadow-sm object-cover"
-                                    />
-                                    <div>
-                                        <h2 className="text-lg font-semibold text-gray-800">
-                                            {customer.name}
-                                        </h2>
-                                        <span className="text-xs text-gray-500">
-                                            ✅ Completed
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Hình ảnh */}
-                                <div className="grid grid-cols-4 gap-2 w-3/4">
-                                    {customer.images.map((img, index) => (
-                                        <img
-                                            key={index}
-                                            src={img}
-                                            alt={`Finished Work ${index + 1}`}
-                                            className="w-full h-24 object-cover rounded-lg shadow-md hover:scale-105 transition cursor-pointer"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setSelectedImage(img);
-                                            }}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Thông tin mở rộng */}
-                            {expandedCustomer === customer.id && (
-                                <div className="mt-4 p-4 bg-gray-100 rounded-lg border border-gray-300">
-                                    <p>
-                                        <strong>📞 Số điện thoại:</strong>{" "}
-                                        {customer.phone}
-                                    </p>
-                                    <p>
-                                        <strong>📍 Địa chỉ:</strong>{" "}
-                                        {customer.address}
-                                    </p>
-                                    <p>
-                                        <strong>📝 Lời nhắn:</strong> "
-                                        {customer.note}"
-                                    </p>
-                                    <p>
-                                        <strong>📂 Source:</strong>
-                                        <a
-                                            href={customer.source}
-                                            className="text-blue-600 hover:underline"
-                                            download
-                                        >
-                                            {" "}
-                                            Tải về
-                                        </a>
-                                    </p>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Modal hiển thị ảnh lớn */}
-            {selectedImage && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center"
-                    onClick={() => setSelectedImage(null)}
+      <div className="overflow-x-auto bg-white shadow-md rounded-xl">
+        <table className="min-w-full divide-y divide-gray-200 text-sm">
+          <thead className="bg-gray-50 text-left">
+            <tr>
+              <th className="px-6 py-4 font-semibold text-gray-700">Customer</th>
+              <th className="px-6 py-4 font-semibold text-gray-700">Status</th>
+              <th className="px-6 py-4 font-semibold text-gray-700">Action</th>
+            </tr>
+          </thead>
+          <tbody className="text-gray-700 divide-y divide-gray-100">
+            {finishedCustomers.map((customer) => (
+              <React.Fragment key={customer.id}>
+                <tr
+                  className="hover:bg-gray-50 transition cursor-pointer"
+                  onClick={() => toggleExpand(customer.id)}
                 >
+                  <td className="px-6 py-4 flex items-center gap-3 whitespace-nowrap">
                     <img
-                        src={selectedImage}
-                        alt="Finished Work"
-                        className="max-w-full max-h-screen rounded-lg shadow-lg object-contain"
+                      src={customer.avatar}
+                      alt={customer.name}
+                      className="w-10 h-10 rounded-full object-cover border"
                     />
-                </div>
-            )}
-        </div>
-    );
+                    <div>
+                      <p className="font-medium text-gray-800">{customer.name}</p>
+                      <span className="text-xs text-green-600">Completed</span>
+                    </div>
+                  </td>
+
+                  <td className="px-6 py-4">
+                    <span className="bg-green-100 text-green-700 px-3 py-1 text-xs rounded-full font-medium">
+                      Finished
+                    </span>
+                  </td>
+
+                  <td className="px-6 py-4">
+                    <span className="text-[#e5b378] text-xs font-semibold hover:underline">
+                      {expandedCustomer === customer.id ? "Hide" : "View"}
+                    </span>
+                  </td>
+                </tr>
+
+                {/* Expanded Info */}
+                {expandedCustomer === customer.id && (
+                  <tr className="bg-gray-50">
+                    <td colSpan={3} className="px-6 py-5">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <p>
+                          <strong>Phone:</strong> {customer.phone}
+                        </p>
+                        <p>
+                          <strong>Address:</strong> {customer.address}
+                        </p>
+                        <p className="sm:col-span-2">
+                          <strong>Feedback:</strong> "{customer.note}"
+                        </p>
+                        <p className="sm:col-span-2">
+                          <strong>Source:</strong>{" "}
+                          <a
+                            href={customer.source}
+                            download
+                            className="text-blue-600 hover:underline"
+                          >
+                            Download File
+                          </a>
+                        </p>
+                      </div>
+
+                      {/* Gallery */}
+                      <div className="mt-6">
+                        <p className="font-medium text-gray-700 mb-2">Gallery</p>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                          {customer.images.map((img, index) => (
+                            <img
+                              key={index}
+                              src={img}
+                              alt="Preview"
+                              className="w-full h-24 object-cover rounded-md shadow-sm hover:scale-105 transition cursor-pointer"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSelectedImage(img);
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {/* Modal image preview */}
+    {selectedImage && (
+      <div
+        className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
+        onClick={() => setSelectedImage(null)}
+      >
+        <img
+          src={selectedImage}
+          alt="Zoomed"
+          className="max-w-full max-h-screen rounded-lg shadow-lg object-contain"
+        />
+      </div>
+    )}
+  </section>
+);
+
+
 };
 
 export default FinishList;

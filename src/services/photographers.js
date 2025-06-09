@@ -1,17 +1,16 @@
 import axios from "axios";
 
 const PHOTOGRAPHERS_BASE_API_URL = import.meta.env.VITE_API_URL_PHOTOGRAPHER;
-console.log(PHOTOGRAPHERS_BASE_API_URL);
 
-export const getAllPhotographers = () => axios.get(PHOTOGRAPHERS_BASE_API_URL);
+export const getAllPhotographers = () => axios.get(PHOTOGRAPHERS_BASE_API_URL); 
 
-export const getPhotographersById = (pId) =>
+export const getPhotographersById = (pId) =>  
   axios.get(PHOTOGRAPHERS_BASE_API_URL + "/" + pId);
 
-export const getPhotographerServices = (photographerId) =>
+export const getPhotographerServices = (photographerId) =>  
   axios.get(PHOTOGRAPHERS_BASE_API_URL + "/services/" + photographerId);
 
-export const getPhotograp = async (photographerId) => {
+export const getPhotograp = async (photographerId) => { 
   console.log(PHOTOGRAPHERS_BASE_API_URL);
   try {
     const res = await axios.get(
@@ -20,11 +19,11 @@ export const getPhotograp = async (photographerId) => {
     return res;
   } catch (err) {}
 };
-export const updateInforPhotograp = (userId, updateUser) =>
+export const updateInforPhotograp = (userId, updateUser) => 
   axios.put(PHOTOGRAPHERS_BASE_API_URL + "/user/" + userId, updateUser);
-export const uploadAvatarPhoto = (userId, formData) =>
+export const uploadAvatarPhoto = (userId, formData) =>  
   axios.post(
-    PHOTOGRAPHERS_BASE_API_URL + "/user/uploadImage/" + userId,
+    PHOTOGRAPHERS_BASE_API_URL + "/user/uploadImage/" + userId,  
     formData,
     {
       headers: {
