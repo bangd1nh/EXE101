@@ -18,6 +18,7 @@ export const bookPhotographer = (photographerId, data) =>
     axios.post(BOOKING_BASE_URL + "/book/photographer/" + photographerId, data);
 
 export const getPendingBooking = (photographerId) =>   
+    axios.get(BOOKING_BASE_URL + "/book/" + photographerId);
 
 export const acceptBookingRequest = (bookingId) =>  
     axios.get(BOOKING_BASE_URL + "/book/accept/" + bookingId);
@@ -25,14 +26,11 @@ export const acceptBookingRequest = (bookingId) =>
 export const getAcceptedBookingRequest = (photographerId) =>  
     axios.get(BOOKING_BASE_URL + "/book/acceptList/" + photographerId);
 
-export const doneBookingRequest = (bookingId) =>   
-    axios.get(BOOKING_BASE_URL + "/book/done/" + bookingId);
-
 export const getCustomerBooking = (customerId) =>   
     axios.get(BOOKING_BASE_URL + "/book/customer/" + customerId);
 
 export const rejectBookingRequest = (bookingId) =>    
-    axios.patch(BOOKING_BASE_URLS +  bookingId + "/reject");
+    axios.patch(`${BOOKING_BASE_URLS}${bookingId}/reject`);
 
 export const uploadDemoRequest = (bookingId, formData) =>    
     axios.patch(`${BOOKING_BASE_URLS}${bookingId}/demo`, formData, {
