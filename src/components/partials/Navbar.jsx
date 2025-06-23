@@ -177,7 +177,7 @@ const Navbar = () => {
                       <Link to="/login">Login</Link>
                     </li>
                     <li className="hover:bg-gray-100 px-4 py-2 rounded-b-lg" onClick={handleSubMenuClick}>
-                      <Link to="/signup">Sign Up</Link>
+                      <Link to="/register">Sign Up</Link>
                     </li>
                   </>
                 )}
