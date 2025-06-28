@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import ButtonWishList from "./ButtonWishList";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserRole } from "../../services/user";
 
@@ -67,29 +66,11 @@ const Navbar = () => {
 
         {/* Menu for Desktop */}
         <ul className="hidden md:flex space-x-6 text-base font-medium">
-          {/* Photographers Dropdown */}
-          <li className="relative group">
-            <button onClick={() => toggleDropdown("photographers")} className="text-gray-700 hover:text-[#f27457] transition duration-300">
+          <li>
+            <Link to="/photographer" className="text-gray-700 hover:text-[#f27457] transition duration-300">
               Photographers
-            </button>
-            {openDropdown === "photographers" && (
-              <ul
-                ref={dropdownRef}
-                className="absolute left-0 bg-white bg-opacity-95 shadow-lg mt-2 rounded-lg w-48 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              >
-                <li className="hover:bg-gray-100 px-4 py-2 rounded-t-lg" onClick={handleSubMenuClick}>
-                  <Link to="/photographer">Top</Link>
-                </li>
-                <li className="hover:bg-gray-100 px-4 py-2" onClick={handleSubMenuClick}>
-                  <Link to="/photographers/newcomers">Newcomers</Link>
-                </li>
-                <li className="hover:bg-gray-100 px-4 py-2 rounded-b-lg" onClick={handleSubMenuClick}>
-                  <Link to="/photographers/awards">Best Awards</Link>
-                </li>
-              </ul>
-            )}
+            </Link>
           </li>
-
           {/* Customer Dropdown */}
           {getUserRole() === "PHOTOGRAPHER" && (
             <li className="relative group">
@@ -128,13 +109,13 @@ const Navbar = () => {
             </li>
           )}
           <li>
-            <Link to="/events" className="text-gray-700 hover:text-[#f27457] transition duration-300">
-              Events
+            <Link to="/about" className="text-gray-700 hover:text-[#f27457] transition duration-300">
+              About FrameMate
             </Link>
           </li>
           <li>
-            <Link to="/about" className="text-gray-700 hover:text-[#f27457] transition duration-300">
-              About FrameMate
+            <Link to={getUserRole() === "ADMIN" ? "/admin/blogs" : "/blogs"} className="text-gray-700 hover:text-[#f27457] transition duration-300">
+              Blogs
             </Link>
           </li>
         </ul>
@@ -184,8 +165,6 @@ const Navbar = () => {
               </ul>
             )}
           </div>
-
-          {getUserRole() !== "PHOTOGRAPHER" && <ButtonWishList />}
         </div>
       </div>
 
