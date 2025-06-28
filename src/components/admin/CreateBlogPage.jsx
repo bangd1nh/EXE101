@@ -10,7 +10,7 @@ function CreateBlogPage() {
 
 const handleSaveToBackend = async (formData) => {
   try {
-    await axios.post('/api/blogs', formData, {
+    await axios.post('https://exe202-backend-e32f.onrender.com/api/blogs', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
     });
     toast.success('Bài viết đã được lưu!')

@@ -45,7 +45,7 @@ const BlogEditor = ({
     formData.append("image", file);
     setUploadingImage(true);
     try {
-      const response = await axios.post("/api/blogs/upload-sub-image", formData, {
+      const response = await axios.post("https://exe202-backend-e32f.onrender.com/api/blogs/upload-sub-image", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       return response.data.data.imageUrl;

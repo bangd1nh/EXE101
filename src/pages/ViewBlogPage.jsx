@@ -15,7 +15,7 @@ function ViewBlogPage() {
   const [blog, setBlog] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/blogs/slug/${slug}`)
+    axios.get(`https://exe202-backend-e32f.onrender.com/api/blogs/slug/${slug}`)
       .then(res => setBlog(res.data.data))
       .catch(err => console.error(err));
   }, [slug]);

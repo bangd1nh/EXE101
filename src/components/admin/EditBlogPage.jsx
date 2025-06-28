@@ -13,7 +13,7 @@ const EditBlogPage = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`/api/blogs/slug/${slug}`);
+        const res = await axios.get(`https://exe202-backend-e32f.onrender.com/api/blogs/slug/${slug}`);
         setBlog(res.data.data);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu bài viết:', error);

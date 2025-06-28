@@ -13,7 +13,7 @@ function BlogListPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("/api/blogs");
+        const res = await axios.get("https://exe202-backend-e32f.onrender.com/api/blogs");
         const sorted = res.data.data.sort((a, b) => new Date(b.CreatedAt) - new Date(a.CreatedAt));
         setBlogs(sorted);
       } catch (error) {
