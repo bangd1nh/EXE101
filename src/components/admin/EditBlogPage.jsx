@@ -25,7 +25,7 @@ const EditBlogPage = () => {
 
   const handleUpdate = async (formData) => {
     try {
-      await axios.put(`/api/blogs/${slug}`, formData, {
+      await axios.put(`https://exe202-backend-e32f.onrender.com/api/blogs/${slug}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
