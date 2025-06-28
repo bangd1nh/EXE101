@@ -23,7 +23,7 @@ function Galery() {
       <div className="my-5 flex flex-col gap-3 sm:gap-5">
         <p className="text-3xl sm:text-5xl font-bold text-[#f27457]">3 Lý Do</p>
         <p className="text-3xl sm:text-5xl font-bold text-[#f27457]">
-          Để Đặt Lịch Chụp Ở Framate
+          Để Đặt Lịch Chụp Ở FrameMate
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
