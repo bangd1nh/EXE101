@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import {
-  Box, TextField, Button, Typography, Chip, Stack, InputLabel, CircularProgress,
-} from "@mui/material";
+import { Box, TextField, Button, Typography, Chip, Stack, InputLabel, CircularProgress } from "@mui/material";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Link from "@tiptap/extension-link";
@@ -10,13 +8,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import TiptapToolbar from "./TiptapToolbar";
 
-const BlogEditor = ({
-  onSave,
-  initialTitle = "",
-  initialContent = "",
-  initialTags = [],
-  initialCoverImage = "",
-}) => {
+const BlogEditor = ({ onSave, initialTitle = "", initialContent = "", initialTags = [], initialCoverImage = "" }) => {
   const [title, setTitle] = useState(initialTitle);
   const [coverImageFile, setCoverImageFile] = useState(null);
   const [coverImagePreview, setCoverImagePreview] = useState(initialCoverImage);
@@ -50,7 +42,7 @@ const BlogEditor = ({
       });
       return response.data.data.imageUrl;
     } catch (error) {
-      toast.error("Lỗi upload ảnh")
+      toast.error("Lỗi upload ảnh");
       return null;
     } finally {
       setUploadingImage(false);
@@ -68,7 +60,16 @@ const BlogEditor = ({
       if (file) {
         const url = await handleSubImageUpload(file);
         if (url) {
-          editor?.chain().focus().setImage({ src: url }).run();
+          editor
+            ?.chain()
+            .focus()
+            .insertContent(
+              `<figure>
+              <img src="${url}" />
+              <figcaption>Nhập caption ở đây...</figcaption>
+          </figure>`
+            )
+            .run();
         }
       }
     };
@@ -121,14 +122,7 @@ const BlogEditor = ({
   return (
     <Box>
       {/* Tiêu đề */}
-      <TextField
-        fullWidth
-        label="Tiêu đề bài viết"
-        variant="outlined"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        sx={{ mb: 3 }}
-      />
+      <TextField fullWidth label="Tiêu đề bài viết" variant="outlined" value={title} onChange={(e) => setTitle(e.target.value)} sx={{ mb: 3 }} />
 
       {/* Ảnh đại diện */}
       <Box sx={{ mb: 2 }}>
@@ -139,11 +133,7 @@ const BlogEditor = ({
         </Button>
         {coverImagePreview && (
           <Box mt={2}>
-            <img
-              src={coverImagePreview}
-              alt="cover"
-              style={{ width: "100%", borderRadius: 8 }}
-            />
+            <img src={coverImagePreview} alt="cover" style={{ width: "100%", borderRadius: 8 }} />
           </Box>
         )}
       </Box>
@@ -194,13 +184,7 @@ const BlogEditor = ({
         </Box>
       </Box>
 
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={handleSaveBlog}
-        disabled={saving}
-        startIcon={saving && <CircularProgress size={18} />}
-      >
+      <Button variant="contained" color="primary" onClick={handleSaveBlog} disabled={saving} startIcon={saving && <CircularProgress size={18} />}>
         {saving ? "Đang lưu..." : "Lưu bài viết"}
       </Button>
     </Box>
