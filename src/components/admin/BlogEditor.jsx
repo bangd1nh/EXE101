@@ -60,16 +60,7 @@ const BlogEditor = ({ onSave, initialTitle = "", initialContent = "", initialTag
       if (file) {
         const url = await handleSubImageUpload(file);
         if (url) {
-          editor
-            ?.chain()
-            .focus()
-            .insertContent(
-              `<figure>
-              <img src="${url}" />
-              <figcaption>Nhập caption ở đây...</figcaption>
-          </figure>`
-            )
-            .run();
+          editor?.chain().focus().setImage({ src: url, alt: "Ảnh mô tả" }).run();
         }
       }
     };

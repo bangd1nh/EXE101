@@ -70,15 +70,36 @@ function ViewBlogPage() {
               marginRight: "auto",
             },
 
-            "& figure": {
-              my: 3,
+            // Caption
+            "& img + p, & img + em, & img + i, & img + span": {
+              display: "block",
               textAlign: "center",
-            },
-            "& figcaption": {
               fontStyle: "italic",
               fontSize: "0.9rem",
               color: "gray",
-              mt: 1,
+              mt: -1,
+              mb: 2,
+            },
+
+            // Khi dùng figure (nếu sau này làm)
+            "& figure": {
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              margin: "24px 0",
+            },
+
+            "& figure img": {
+              maxWidth: "100%",
+              borderRadius: 2,
+            },
+
+            "& figure figcaption": {
+              textAlign: "center",
+              fontStyle: "italic",
+              fontSize: "0.9rem",
+              color: "gray",
+              marginTop: "4px",
             },
 
             // Heading
@@ -100,23 +121,13 @@ function ViewBlogPage() {
               mt: 2.5,
               mb: 1.2,
             },
-
-            // Paragraph
             "& p": {
               mb: 2,
             },
-
-            // List
-            "& ul": {
+            "& ul, & ol": {
               pl: 4,
               mb: 2,
             },
-            "& ol": {
-              pl: 4,
-              mb: 2,
-            },
-
-            // Blockquote
             "& blockquote": {
               borderLeft: "4px solid #ccc",
               paddingLeft: 2,
@@ -124,8 +135,6 @@ function ViewBlogPage() {
               fontStyle: "italic",
               mb: 2,
             },
-
-            // Link
             "& a": {
               color: "#1976d2",
               textDecoration: "underline",
