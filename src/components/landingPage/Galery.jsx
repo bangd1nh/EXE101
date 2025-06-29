@@ -47,7 +47,7 @@ function Galery() {
               Chi phí hợp lý – Chất lượng đảm bảo
             </p>
             <p className="font-light text-sm sm:text-base">
-              Frammate hướng đến các bạn sinh viên và những người có thu nhập
+              FrameMate hướng đến các bạn sinh viên và những người có thu nhập
               trung bình, vì vậy chúng tôi luôn mang đến các gói chụp ảnh với
               mức giá phải chăng mà vẫn đảm bảo chất lượng. Bạn có thể dễ dàng
               tìm được nhiếp ảnh gia phù hợp với ngân sách của mình mà không lo
@@ -80,7 +80,7 @@ function Galery() {
               Chỉ với vài thao tác đơn giản, bạn có thể tìm kiếm và kết nối với
               các nhiếp ảnh gia nghiệp dư tài năng theo phong cách và nhu cầu
               của mình. Dù là chụp kỷ yếu, sự kiện, chân dung hay những khoảnh
-              khắc đời thường, Frammate luôn có sẵn những lựa chọn phù hợp nhất
+              khắc đời thường, FrameMate luôn có sẵn những lựa chọn phù hợp nhất
               dành cho bạn.
             </p>
           </div>
@@ -110,7 +110,7 @@ function Galery() {
               Cơ hội cho nhiếp ảnh gia trẻ
             </p>
             <p className="font-light text-sm sm:text-base">
-              Frammate không chỉ là nền tảng kết nối mà còn là bệ phóng cho các
+              FrameMate không chỉ là nền tảng kết nối mà còn là bệ phóng cho các
               nhiếp ảnh gia trẻ đam mê. Chúng tôi tạo điều kiện để các bạn có
               thể kiếm thêm thu nhập, trau dồi kỹ năng và xây dựng thương hiệu
               cá nhân từ chính niềm yêu thích nhiếp ảnh của mình.

@@ -22,13 +22,10 @@ const Footer = () => {
             Công ty TNHH Framate
           </p>
           <p className="font-light text-xs sm:text-sm text-center sm:text-left">
-            Địa chỉ: Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Địa chỉ: FPT University - Ngu Hanh Son - Da Nang
           </p>
           <p className="font-light text-xs sm:text-sm text-center sm:text-left">
-            Mã số doanh nghiệp: 00000000000
-          </p>
-          <p className="font-light text-xs sm:text-sm text-center sm:text-left">
-            Điện thoại: 094171919
+            Điện thoại: 0858340270
           </p>
           <div className="text-xl sm:text-3xl flex gap-4 sm:gap-5 justify-center sm:justify-start">
             <FacebookOutlined />

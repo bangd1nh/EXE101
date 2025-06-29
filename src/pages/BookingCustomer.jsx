@@ -29,6 +29,7 @@ const BookingCustomer = () => {
   };
 
   const handleDoneClick = async (bookingId, photographerId) => {
+    console.log({bookingId})
     setSelectedBookingId(bookingId);
     setLoadingAccept(true);
     try {
@@ -103,8 +104,8 @@ const BookingCustomer = () => {
                   <button onClick={() => handleDoneClick(booking._id, booking.PhotographerId.PhotographerId._id)} className="bg-green-600 text-white px-4 py-2 rounded" disabled={loadingAccept}>
                     {loadingAccept ? <Loading size="sm" /> : "Done"}
                   </button>
-                </div>
-              )}
+                </div>   
+              )} 
 
               {booking.Status === "DONE" && actualDriveLink && (
                 <div className="mt-4 text-green-600 text-sm">

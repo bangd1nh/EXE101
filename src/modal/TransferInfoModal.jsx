@@ -37,9 +37,9 @@ const TransferInfoModal = ({ open, onClose, transferData }) => {
                 <Typography variant="subtitle1" gutterBottom>
                     Chủ tài khoản: <strong>{accountHolder}</strong>
                 </Typography>
-                <Typography variant="subtitle1" gutterBottom>
+                {/* <Typography variant="subtitle1" gutterBottom>
                     Số tiền: <strong>{amount.toLocaleString()} VND</strong>
-                </Typography>
+                </Typography> */}
                 <Typography variant="body2" color="text.secondary" mt={1}>
                     * Vui lòng chuyển đúng số tiền và nội dung để hệ thống tự
                     động xác nhận.
