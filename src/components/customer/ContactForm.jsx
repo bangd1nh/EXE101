@@ -32,7 +32,7 @@ const ContactForm = () => {
     const transferData = {
         bankName: "Mbbank",
         accountNumber: "838929082002",
-        accountHolder: "TRAN QUYET THANG",
+        accountHolder: "Admin",
         amount: 500000,
     };
 

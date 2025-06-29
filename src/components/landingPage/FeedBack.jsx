@@ -19,8 +19,8 @@ function FeedBack() {
           </p>
           <p className="font-light text-sm sm:text-base mt-2">
             "Mình đã tìm được một nhiếp ảnh gia cực kỳ thân thiện và chuyên
-            nghiệp qua Frammate. Giá cả rất hợp lý, phù hợp với sinh viên như
-            mình mà chất lượng ảnh thì ngoài mong đợi. Cảm ơn Frammate đã giúp
+            nghiệp qua FrameMate. Giá cả rất hợp lý, phù hợp với sinh viên như
+            mình mà chất lượng ảnh thì ngoài mong đợi. Cảm ơn FrameMate đã giúp
             mình lưu giữ những khoảnh khắc tuyệt vời này!"
           </p>
           <p className="text-center mt-4 sm:mt-5 text-indigo-600 hover:cursor-pointer hover:text-indigo-800 text-sm sm:text-base">
@@ -36,7 +36,7 @@ function FeedBack() {
             Minh Quân – Khách hàng cá nhân
           </p>
           <p className="font-light text-sm sm:text-base mt-2">
-            "Nhờ Frammate, mình đã có một bộ ảnh kỷ yếu đẹp lung linh với chi
+            "Nhờ FrameMate, mình đã có một bộ ảnh kỷ yếu đẹp lung linh với chi
             phí phải chăng. Việc đặt lịch và trao đổi với nhiếp ảnh gia rất dễ
             dàng và nhanh chóng. Đây thực sự là một nền tảng tuyệt vời cho những
             ai muốn có ảnh đẹp mà không lo về giá!"
@@ -54,7 +54,7 @@ function FeedBack() {
             Hà My – Nhiếp ảnh gia nghiệp dư
           </p>
           <p className="font-light text-sm sm:text-base mt-2">
-            "Là một sinh viên yêu thích nhiếp ảnh, Frammate đã giúp mình có thêm
+            "Là một sinh viên yêu thích nhiếp ảnh, FrameMate đã giúp mình có thêm
             cơ hội kiếm thêm thu nhập từ niềm đam mê. Nền tảng dễ sử dụng, kết
             nối nhanh chóng với khách hàng và mình còn học hỏi được rất nhiều
             kinh nghiệm thực tế!"

@@ -68,7 +68,7 @@ function About() {
           <img
             src="about1.jpg"
             className="rounded-3xl w-full max-w-md h-auto sm:h-[500px] lg:h-[600px] object-cover"
-            alt="Frammate Welcome"
+            alt="FrameMate Welcome"
           />
         </div>
         <div className="order-2 lg:col-span-2 flex flex-col justify-center">
@@ -77,23 +77,23 @@ function About() {
               Xin chào,
             </p>
             <p className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#f27457]">
-              Đây là Frammate!
+              Đây là FrameMate!
             </p>
           </div>
           <div className="mt-4 sm:mt-6 bg-gray-100/70 p-6 sm:p-8 lg:p-10 rounded-3xl flex flex-col gap-4 sm:gap-5 text-base sm:text-lg lg:text-xl font-light text-center lg:text-left">
             <p>
-              Chào mừng bạn đến với Frammate – nơi kết nối những đam mê nhiếp
+              Chào mừng bạn đến với FrameMate – nơi kết nối những đam mê nhiếp
               ảnh với những khoảnh khắc đáng nhớ!
             </p>
             <p>
               Chúng tôi hiểu rằng mỗi kỷ niệm đẹp đều xứng đáng được lưu giữ
-              trọn vẹn. Vì thế, Frammate ra đời với mong muốn trở thành cầu nối
+              trọn vẹn. Vì thế, FrameMate ra đời với mong muốn trở thành cầu nối
               giữa các bạn trẻ yêu thích nhiếp ảnh – đặc biệt là các bạn sinh
               viên – và những ai muốn ghi lại những phút giây ý nghĩa trong cuộc
               sống.
             </p>
             <p>
-              Tại Frammate, bạn dễ dàng tìm được những nhiếp ảnh gia nghiệp dư
+              Tại FrameMate, bạn dễ dàng tìm được những nhiếp ảnh gia nghiệp dư
               tài năng, uy tín với mức chi phí hợp lý, phù hợp với túi tiền của
               học sinh, sinh viên. Đồng thời, chúng tôi cũng mở ra cơ hội để các
               bạn đam mê nhiếp ảnh kiếm thêm thu nhập, trau dồi kỹ năng và xây
@@ -109,7 +109,7 @@ function About() {
       {/* Section 2: Slogan */}
       <div className="text-center my-10 sm:my-16">
         <p className="text-3xl sm:text-4xl lg:text-5xl text-[#f27457] font-bold">
-          Frammate – Lưu giữ khoảnh khắc, kết nối đam mê!
+          FrameMate – Lưu giữ khoảnh khắc, kết nối đam mê!
         </p>
       </div>
 
@@ -117,7 +117,7 @@ function About() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 my-10 sm:my-16">
         <div className="order-2 lg:order-1 lg:col-span-2">
           <p className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#f27457] text-center lg:text-left">
-            Chuyện của Frammate
+            Chuyện của FrameMate
           </p>
           <div className="mt-4 sm:mt-6 bg-gray-100/70 p-6 sm:p-8 lg:p-10 rounded-3xl flex flex-col gap-4 sm:gap-5 text-base sm:text-lg lg:text-xl font-light text-center lg:text-left">
             <p>
@@ -126,13 +126,13 @@ function About() {
               xứng đáng được lưu giữ.
             </p>
             <p>
-              Xuất phát từ chính những trăn trở đó, Frammate ra đời với sứ mệnh
+              Xuất phát từ chính những trăn trở đó, FrameMate ra đời với sứ mệnh
               kết nối những bạn trẻ yêu thích nhiếp ảnh – đặc biệt là các nhiếp
               ảnh gia nghiệp dư – với những ai muốn ghi lại những giây phút ý
               nghĩa trong cuộc sống.
             </p>
             <p>
-              Với Frammate, không chỉ là nơi khách hàng tìm kiếm dịch vụ chụp
+              Với FrameMate, không chỉ là nơi khách hàng tìm kiếm dịch vụ chụp
               ảnh, mà còn là cơ hội để các nhiếp ảnh gia trẻ phát triển kỹ năng,
               xây dựng thương hiệu cá nhân và kiếm thêm thu nhập từ chính niềm
               đam mê của mình.
@@ -143,7 +143,7 @@ function About() {
           <img
             src="about2.jpg"
             className="rounded-3xl w-full max-w-md h-auto sm:h-[500px] lg:h-[600px] object-cover"
-            alt="Frammate Story"
+            alt="FrameMate Story"
           />
         </div>
       </div>
