@@ -9,16 +9,19 @@ function PhotographerCard({ photographer }) {
         <div className="p-6 bg-white shadow-lg rounded-lg flex flex-col md:flex-row gap-6">
             <div className="flex-shrink-0 min-w-1/6 text-center">
                 <img
-                    src={photographer.PhotographerId.Avatar}
+                    src={
+                        photographer.PhotographerId?.Avatar ||
+                        "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+                    }
                     alt="Profile"
                     className="w-24 h-24 rounded-full mx-auto object-cover"
                 />
                 <h2 className="text-lg font-bold text-blue-600 mt-2">
-                    {photographer.PhotographerId.FirstName}{" "}
-                    {photographer.PhotographerId.LastName}
+                    {photographer.PhotographerId?.FirstName}{" "}
+                    {photographer.PhotographerId?.LastName}
                 </h2>
                 <p className="text-sm text-gray-500">
-                    @{photographer.PhotographerId.Username} PRO+
+                    @{photographer.PhotographerId?.Username} PRO+
                 </p>
                 <p className="text-sm text-gray-600">{photographer.Location}</p>
             </div>
